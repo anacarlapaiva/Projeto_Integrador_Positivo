@@ -6,7 +6,7 @@ const Header = () => {
         <Container>
             <HeaderElement>
                 <Comeback>Bem vindo,
-                    <Name>Ana Carla</Name>
+                    <Name>{'\n'}Ana Carla</Name>
                 </Comeback>
 
                 {/* <Picture /> */}
