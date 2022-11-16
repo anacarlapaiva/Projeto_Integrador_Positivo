@@ -8,14 +8,15 @@ import theme from './src/global/theme';
 export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-    <ThemeProvider theme={theme}>
-      <StatusBar
-        backgroundColor="transparent"
-        translucent
-      />
+      <ThemeProvider theme={theme}>
+        <StatusBar
+          backgroundColor="transparent"
+          translucent
+          style='dark'
+        />
         <Routes />
-    </ThemeProvider>
-  </GestureHandlerRootView>
+      </ThemeProvider>
+    </GestureHandlerRootView>
   );
 }
 
