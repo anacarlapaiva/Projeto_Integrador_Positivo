@@ -1,35 +1,32 @@
-import { RFValue } from 'react-native-responsive-fontsize';
+import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
-
-// import Image from "../../assets/profile-user.png";
 
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
-  padding: 0 18px;
+  padding: 0 30px 28px;
 `;
-
 
 export const HeaderElement = styled.View`
   width: 100%;
-  height: 10%;
   flex-direction: row;
   align-items: center;
-  margin-top: ${RFValue(30)}px;
+  justify-content: space-between;
+  margin-top: ${RFValue(70)}px;
 `;
 
 export const Name = styled.Text`
-    color: ${({theme}) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
-// export const Picture = styled(Image)`
-
-// `;
+export const UserImg = styled.Image`
+  width: ${RFPercentage(7)}px;
+  height: ${RFPercentage(7)}px;
+`;
 
 export const Comeback = styled.Text`
   font-size: ${RFValue(24)}px;
   color: ${({ theme }) => theme.colors.text_dark};
   align-items: center;
-  margin-left: ${RFValue(10)}%;
 `;
 
