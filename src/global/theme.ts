@@ -9,7 +9,7 @@ export default {
   
       border_location: "#E0E0E0",
   
-      title: "#808B98",
+      title: "#4C4C4C",
       description: "#757575",
       step_bar: "#CDCFD5",
       title_light: "#E7EBF1",
