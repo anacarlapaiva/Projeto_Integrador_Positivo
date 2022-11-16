@@ -1,5 +1,6 @@
 import React from 'react'
-import { Container, HeaderElement, Comeback, Name } from './styles'
+import { Container, HeaderElement, Comeback, Name, UserImg } from './styles'
+import User from "../../assets/profile-user.png";
 
 const Header = () => {
     return (
@@ -9,7 +10,7 @@ const Header = () => {
                     <Name>{'\n'}Ana Carla</Name>
                 </Comeback>
 
-                {/* <Picture /> */}
+                <UserImg source={User}/>
             </HeaderElement>
         </Container>
     )
