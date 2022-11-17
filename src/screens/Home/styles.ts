@@ -32,7 +32,7 @@ export const ContentSubMenu = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-top: ${RFValue(23)}px;
+  margin-bottom: ${RFValue(23)}px;
 `;
 
 export const TitlePage = styled.Text`
