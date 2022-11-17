@@ -8,6 +8,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Home from "../screens/Home";
 import Teste from "../screens/TelaCrudEditarVendedor";
+import TelaSelecionarCruds from "../screens/TelaSelecionarCruds";
 
 const BottomTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -48,8 +49,8 @@ export function AuthRoutes() {
         }}
       />
       <BottomTab.Screen
-        name="Teste"
-        component={Teste}
+        name="TelaSelecionarCruds"
+        component={TelaSelecionarCruds}
         options={{
           tabBarIcon: ({ color, size }) => (
             <FontAwesome name="edit" size={size} color={color} />

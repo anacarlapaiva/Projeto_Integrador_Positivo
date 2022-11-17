@@ -1,6 +1,13 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import {
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableWithoutFeedback,
+} from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import InputForm from "../../components/InputForm";
@@ -48,78 +55,86 @@ const TelaCrudEditarVendedor = () => {
   };
 
   return (
-    <Container>
-      <Header />
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <Container>
+          <Header />
 
-      <ContentSubMenu>
-        <TitlePage>Editar Vendedor</TitlePage>
-        <SeeAll onPress={() => navigation.goBack()}>Voltar</SeeAll>
-      </ContentSubMenu>
+          <ContentSubMenu>
+            <TitlePage>Editar Vendedor</TitlePage>
+            <SeeAll onPress={() => navigation.goBack()}>Voltar</SeeAll>
+          </ContentSubMenu>
+          <ScrollView>
+            <Form>
+              <Fields>
+                <InputForm
+                  placeholder="Documento"
+                  name="documento"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="default"
+                />
+                <InputForm
+                  placeholder="Nome"
+                  name="nome"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="default"
+                />
+                <InputForm
+                  placeholder="Imóveis cadastrados"
+                  name="imoveis"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="default"
+                />
+                <InputForm
+                  placeholder="Endereço"
+                  name="endereco"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="default"
+                />
+                <InputForm
+                  placeholder="Telefone"
+                  name="telefone"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="default"
+                />
+                <InputForm
+                  placeholder="Data de nascimento"
+                  name="nascimento"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="decimal-pad"
+                />
+              </Fields>
 
-      <Form>
-        <Fields>
-          <InputForm
-            placeholder="Documento"
-            name="documento"
-            control={control}
-            autoCorrect={false}
-            keyboardType="default"
-          />
-          <InputForm
-            placeholder="Nome"
-            name="nome"
-            control={control}
-            autoCorrect={false}
-            keyboardType="default"
-          />
-          <InputForm
-            placeholder="Imóveis cadastrados"
-            name="imoveis"
-            control={control}
-            autoCorrect={false}
-            keyboardType="default"
-          />
-          <InputForm
-            placeholder="Endereço"
-            name="endereco"
-            control={control}
-            autoCorrect={false}
-            keyboardType="default"
-          />
-          <InputForm
-            placeholder="Telefone"
-            name="telefone"
-            control={control}
-            autoCorrect={false}
-            keyboardType="default"
-          />
-          <InputForm
-            placeholder="Data de nascimento"
-            name="nascimento"
-            control={control}
-            autoCorrect={false}
-            keyboardType="decimal-pad"
-          />
-        </Fields>
+              <ContentButton>
+                <Button
+                  title="Enviar"
+                  onPress={handleSubmit(handleSubmitVendedor)}
+                  loading={loading}
+                  enabled={!loading}
+                />
 
-        <ContentButton>
-          <Button
-            title="Enviar"
-            onPress={handleSubmit(handleSubmitVendedor)}
-            loading={loading}
-            enabled={!loading}
-          />
-
-          <Button
-            title="Cancelar"
-            onPress={() => navigation.goBack()}
-            loading={loading}
-            enabled={!loading}
-            style={{ backgroundColor: "red", marginLeft: 10 }}
-          />
-        </ContentButton>
-      </Form>
-    </Container>
+                <Button
+                  title="Cancelar"
+                  onPress={() => navigation.goBack()}
+                  loading={loading}
+                  enabled={!loading}
+                  style={{ backgroundColor: "red", marginLeft: 10 }}
+                />
+              </ContentButton>
+            </Form>
+          </ScrollView>
+        </Container>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
