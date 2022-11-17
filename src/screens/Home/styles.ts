@@ -63,8 +63,7 @@ export const ViewBox = styled.View`
 `;
 
 export const Box = styled.Image`
-
-
+width: 95%;
 `;
 
 export const TextBottom = styled.Text`
@@ -72,5 +71,4 @@ export const TextBottom = styled.Text`
   font-size: ${RFValue(14)}px;
   margin-top: ${RFValue(8)}px;
   margin-bottom: ${RFValue(16)}px;
-
 `;
