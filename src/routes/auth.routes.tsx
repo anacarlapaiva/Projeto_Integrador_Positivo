@@ -6,7 +6,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Home from "../screens/Home";
-import Teste from "../screens/Teste";
+import Teste from "../screens/TelaCrudEditarVendedor";
 
 const BottomTab = createBottomTabNavigator();
 
