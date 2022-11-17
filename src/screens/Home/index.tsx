@@ -15,6 +15,7 @@ import {
 } from "./styles";
 
 import FotoExemplo from "../../assets/example.png";
+import { ScrollView } from "react-native-gesture-handler";
 
 const Home: React.FC = () => {
   const [search, setSearch] = useState<string>("");
@@ -36,25 +37,34 @@ const Home: React.FC = () => {
         <TitlePage>Escolha sua opção</TitlePage>
         <SeeAll>Ver todos</SeeAll>
       </ContentSubMenu>
-
-      <ContentListImage>
-        <ViewBox>
-          <Box source={FotoExemplo} />
-          <TextBottom>Apartamento</TextBottom>
-        </ViewBox>
-        <ViewBox>
-          <Box source={FotoExemplo} />
-          <TextBottom>Apartamento</TextBottom>
-        </ViewBox>
-        <ViewBox>
-          <Box source={FotoExemplo} />
-          <TextBottom>Apartamento</TextBottom>
-        </ViewBox>
-        <ViewBox>
-          <Box source={FotoExemplo} />
-          <TextBottom>Apartamento</TextBottom>
-        </ViewBox>
-      </ContentListImage>
+      <ScrollView>
+        <ContentListImage>
+          <ViewBox>
+            <Box source={FotoExemplo} />
+            <TextBottom>Apartamento</TextBottom>
+          </ViewBox>
+          <ViewBox>
+            <Box source={FotoExemplo} />
+            <TextBottom>Apartamento</TextBottom>
+          </ViewBox>
+          <ViewBox>
+            <Box source={FotoExemplo} />
+            <TextBottom>Apartamento</TextBottom>
+          </ViewBox>
+          <ViewBox>
+            <Box source={FotoExemplo} />
+            <TextBottom>Apartamento</TextBottom>
+          </ViewBox>
+          <ViewBox>
+            <Box source={FotoExemplo} />
+            <TextBottom>Apartamento</TextBottom>
+          </ViewBox>
+          <ViewBox>
+            <Box source={FotoExemplo} />
+            <TextBottom>Apartamento</TextBottom>
+          </ViewBox>
+        </ContentListImage>
+      </ScrollView>
     </Container>
   );
 };
