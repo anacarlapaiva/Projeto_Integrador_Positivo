@@ -2,9 +2,7 @@ import React from "react";
 
 import { Platform } from "react-native";
 import { useTheme } from "styled-components";
-import { MaterialIcons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -43,8 +41,8 @@ export function AuthRoutes() {
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: ({ size, color }) => (
-            <MaterialIcons name="home" size={size} color={color} />
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome name="home" size={size} color={color} />
           ),
           tabBarShowLabel: false,
         }}
@@ -53,8 +51,8 @@ export function AuthRoutes() {
         name="Teste"
         component={Teste}
         options={{
-          tabBarIcon: ({ size, color }) => (
-            <MaterialIcons name="star" size={size} color={color} />
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome name="edit" size={size} color={color} />
           ),
           tabBarShowLabel: false,
         }}
@@ -64,17 +62,25 @@ export function AuthRoutes() {
         name="HomeStackScreen"
         component={StackScreen}
         options={{
-          tabBarIcon: ({ color }) => (
-            <FontAwesome5 name="ticket-alt" size={20} color={color} />
+          tabBarIcon: ({ color,size }) => (
+            <FontAwesome name="user" size={size} color={color} />
           ),
           tabBarShowLabel: false,
         }}
       />
 
+      {/* <BottomTab.Screen
+        name="Teste"
+        component={Teste}
+        options={{
+          tabBarIcon: ({ size, color }) => (
+            <FontAwesome5 name="building" size={size} color={color} />
+          ),
+          tabBarShowLabel: false,
+        }}
+      /> */}
     </BottomTab.Navigator>
   );
 }
 
-export default AuthRoutes
-
-
+export default AuthRoutes;
