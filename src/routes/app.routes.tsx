@@ -9,7 +9,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import Home from "../screens/Home";
-import Teste from "../screens/Teste";
+import Teste from "../screens/TelaCrudEditarVendedor";
 
 const BottomTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
