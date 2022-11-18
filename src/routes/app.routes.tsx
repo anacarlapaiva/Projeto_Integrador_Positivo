@@ -7,20 +7,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import Home from "../screens/Home";
-import Teste from "../screens/TelaCrudEditarVendedor";
+import EditarVendedor from "../screens/TelaCrudEditarVendedor";
 import TelaSelecionarCruds from "../screens/TelaSelecionarCruds";
+import TelaImobiliaria from "../screens/TelaImobiliaria";
+import TelaUsuario from "../screens/Usuario";
 
 const BottomTab = createBottomTabNavigator();
-const Stack = createStackNavigator();
-
-function StackScreen() {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Teste" component={Teste} />
-    </Stack.Navigator>
-  );
-}
 
 export function AuthRoutes() {
   const theme = useTheme();
@@ -60,26 +52,27 @@ export function AuthRoutes() {
       />
 
       <BottomTab.Screen
-        name="HomeStackScreen"
-        component={StackScreen}
+        name="TelaImobiliaria"
+        component={TelaImobiliaria}
         options={{
-          tabBarIcon: ({ color,size }) => (
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome name="building-o" size={size} color={color} />
+          ),
+          tabBarShowLabel: false,
+        }}
+      />
+
+      <BottomTab.Screen
+        name="TelaUsuario"
+        component={TelaUsuario}
+        options={{
+          tabBarIcon: ({ color, size }) => (
             <FontAwesome name="user" size={size} color={color} />
           ),
           tabBarShowLabel: false,
         }}
       />
 
-      {/* <BottomTab.Screen
-        name="Teste"
-        component={Teste}
-        options={{
-          tabBarIcon: ({ size, color }) => (
-            <FontAwesome5 name="building" size={size} color={color} />
-          ),
-          tabBarShowLabel: false,
-        }}
-      /> */}
     </BottomTab.Navigator>
   );
 }
