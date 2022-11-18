@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Header from "../../components/Header";
+import TelaCrudEditarVendedor from "../TelaCrudEditarVendedor";
 import {
   ButtonOptions,
   Container,

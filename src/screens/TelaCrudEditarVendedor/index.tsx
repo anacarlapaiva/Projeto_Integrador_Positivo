@@ -47,6 +47,7 @@ const TelaCrudEditarVendedor = () => {
         telefone: form.telefone,
         nascimento: form.nascimento,
       };
+      console.log(payload)
     } catch {
       setLoading(false);
     } finally {
