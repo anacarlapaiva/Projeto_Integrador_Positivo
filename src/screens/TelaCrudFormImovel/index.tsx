@@ -16,11 +16,10 @@ import {
   ContentSubMenu,
   Fields,
   Form,
-  SeeAll,
   TitlePage,
 } from "./styles";
 
-interface IImovel {
+interface IEditarImovel {
   documento: string;
   nome: string;
   imoveis: any;
@@ -29,13 +28,18 @@ interface IImovel {
   nascimento: any;
 }
 
-const TelaCrudFormCorretor = () => {
+const TelaCrudFormImovel = () => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
 
   const { control, handleSubmit } = useForm();
 
-  const handleSubmitVendedor = async (form: Partial<IImovel>) => {
+  const handleBack = () => {
+    //@ts-ignore
+    navigation.navigate("LocationScreen");
+  };
+
+  const handleSubmitCorretor = async (form: Partial<IEditarImovel>) => {
     try {
       setLoading(true);
       const payload = {
@@ -62,42 +66,69 @@ const TelaCrudFormCorretor = () => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
           <ContentSubMenu>
-            <TitlePage>Editar Vendedor</TitlePage>
-            <SeeAll onPress={() => navigation.goBack()}>Voltar</SeeAll>
+            <TitlePage>Adicionar imóvel</TitlePage>
           </ContentSubMenu>
           <ScrollView>
             <Form>
               <Fields>
                 <InputForm
-                  placeholder="Documento"
-                  name="documento"
+                  placeholder="ID"
+                  name="id"
                   control={control}
                   autoCorrect={false}
                   keyboardType="default"
                 />
                 <InputForm
-                  placeholder="Nome"
-                  name="nome"
+                  placeholder="Metros quadrados do imóvel"
+                  name="metros"
                   control={control}
                   autoCorrect={false}
                   keyboardType="default"
+                />
+                <InputForm
+                  placeholder="Metros quadrados do terreno"
+                  name="metrosterreno"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="default"
+                />
+                <InputForm
+                  placeholder="Valor do imóvel"
+                  name="valor"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="default"
+                />
+                <InputForm
+                  placeholder="Status"
+                  name="status"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="default"
+                />
+                <InputForm
+                  placeholder="Endereço"
+                  name="endereco"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="decimal-pad"
+                />
+                <InputForm
+                  placeholder="Vendedor"
+                  name="vendedor"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="decimal-pad"
                 />
               </Fields>
 
               <ContentButton>
                 <Button
                   title="Enviar"
-                  onPress={handleSubmit(handleSubmitVendedor)}
+                  onPress={handleSubmit(handleSubmitCorretor)}
                   loading={loading}
                   enabled={!loading}
-                />
-
-                <Button
-                  title="Cancelar"
-                  onPress={() => navigation.goBack()}
-                  loading={loading}
-                  enabled={!loading}
-                  style={{ backgroundColor: "red", marginLeft: 10 }}
+                  style={{ backgroundColor: "#a0bbe980" }}
                 />
               </ContentButton>
             </Form>
@@ -108,4 +139,4 @@ const TelaCrudFormCorretor = () => {
   );
 };
 
-export default TelaCrudFormCorretor;
+export default TelaCrudFormImovel;
