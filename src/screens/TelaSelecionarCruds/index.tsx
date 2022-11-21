@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Header from "../../components/Header";
+import ModalContent from "../../components/Modal";
 import TelaCrudEditarVendedor from "../TelaCrudEditarVendedor";
 import {
   ButtonOptions,
@@ -89,6 +90,8 @@ const TelaSelecionarCruds = () => {
                 <ContentSelect>
                   <Right name="adduser" size={24} />
                   <ButtonOptions>Adicionar</ButtonOptions>
+
+                  <ModalContent children={<TelaCrudEditarVendedor />} title="Adicionar usuário" />
                 </ContentSelect>
                 <ContentSelect>
                   <Right name="edit" size={24}  />
