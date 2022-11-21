@@ -30,3 +30,4 @@ export const ButtonElement = styled.Button`
 export const Vector = styled(AntDesign)`
   color: ${({ theme }) => theme.colors.primary};
 `;
+
