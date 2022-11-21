@@ -92,6 +92,34 @@ const TelaCrudFormEndereco = () => {
                   autoCorrect={false}
                   keyboardType="default"
                 />
+                <InputForm
+                  placeholder="Bairro"
+                  name="bairro"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="default"
+                />
+                <InputForm
+                  placeholder="Cidade"
+                  name="cidade"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="default"
+                />
+                <InputForm
+                  placeholder="UF"
+                  name="uf"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="default"
+                />
+                <InputForm
+                  placeholder="Complemento"
+                  name="complemento"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="default"
+                />
               </Fields>
 
               <ContentButton>
