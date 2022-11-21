@@ -20,7 +20,7 @@ import {
   TitlePage,
 } from "./styles";
 
-interface IEditarVendedor {
+interface ICorretor {
   documento: string;
   nome: string;
   imoveis: any;
@@ -29,13 +29,13 @@ interface IEditarVendedor {
   nascimento: any;
 }
 
-const TelaCrudEditarVendedor = () => {
+const TelaCrudFormCorretor = () => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
 
   const { control, handleSubmit } = useForm();
 
-  const handleSubmitVendedor = async (form: Partial<IEditarVendedor>) => {
+  const handleSubmitVendedor = async (form: Partial<ICorretor>) => {
     try {
       setLoading(true);
       const payload = {
@@ -46,7 +46,7 @@ const TelaCrudEditarVendedor = () => {
         telefone: form.telefone,
         nascimento: form.nascimento,
       };
-      console.log(payload)
+      console.log(payload);
     } catch {
       setLoading(false);
     } finally {
@@ -61,7 +61,6 @@ const TelaCrudEditarVendedor = () => {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
-
           <ContentSubMenu>
             <TitlePage>Editar Vendedor</TitlePage>
             <SeeAll onPress={() => navigation.goBack()}>Voltar</SeeAll>
@@ -82,34 +81,6 @@ const TelaCrudEditarVendedor = () => {
                   control={control}
                   autoCorrect={false}
                   keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Imóveis cadastrados"
-                  name="imoveis"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Endereço"
-                  name="endereco"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Telefone"
-                  name="telefone"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Data de nascimento"
-                  name="nascimento"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="decimal-pad"
                 />
               </Fields>
 
@@ -137,4 +108,4 @@ const TelaCrudEditarVendedor = () => {
   );
 };
 
-export default TelaCrudEditarVendedor;
+export default TelaCrudFormCorretor;
