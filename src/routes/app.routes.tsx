@@ -4,7 +4,6 @@ import { Platform } from "react-native";
 import { useTheme } from "styled-components";
 import { FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createStackNavigator } from "@react-navigation/stack";
 
 import Home from "../screens/Home";
 import EditarVendedor from "../screens/TelaCrudEditarVendedor";
