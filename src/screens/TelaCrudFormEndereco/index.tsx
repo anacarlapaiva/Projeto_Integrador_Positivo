@@ -19,7 +19,7 @@ import {
   TitlePage,
 } from "./styles";
 
-interface IEditarCorretor {
+interface IEditarEndereco {
   documento: string;
   nome: string;
   imoveis: any;
@@ -28,7 +28,7 @@ interface IEditarCorretor {
   nascimento: any;
 }
 
-const TelaCrudFormCorretor = () => {
+const TelaCrudFormEndereco = () => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
 
@@ -39,7 +39,7 @@ const TelaCrudFormCorretor = () => {
     navigation.navigate("LocationScreen");
   };
 
-  const handleSubmitCorretor = async (form: Partial<IEditarCorretor>) => {
+  const handleSubmitEndereco = async (form: Partial<IEditarEndereco>) => {
     try {
       setLoading(true);
       const payload = {
@@ -66,62 +66,41 @@ const TelaCrudFormCorretor = () => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
           <ContentSubMenu>
-            <TitlePage>Adicionar corretor</TitlePage>
+            <TitlePage>Adicionar endereço</TitlePage>
           </ContentSubMenu>
           <ScrollView>
             <Form>
               <Fields>
                 <InputForm
-                  placeholder="Documento"
-                  name="documento"
+                  placeholder="ID"
+                  name="id"
                   control={control}
                   autoCorrect={false}
                   keyboardType="default"
                 />
                 <InputForm
-                  placeholder="Nome"
-                  name="nome"
+                  placeholder="CEP"
+                  name="cep"
                   control={control}
                   autoCorrect={false}
                   keyboardType="default"
                 />
                 <InputForm
-                  placeholder="CRECI"
-                  name="creci"
+                  placeholder="Logradouro"
+                  name="logradouro"
                   control={control}
                   autoCorrect={false}
                   keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Endereço"
-                  name="endereco"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Telefone"
-                  name="telefone"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Data de nascimento"
-                  name="nascimento"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="decimal-pad"
                 />
               </Fields>
 
               <ContentButton>
                 <Button
                   title="Enviar"
-                  onPress={handleSubmit(handleSubmitCorretor)}
+                  onPress={handleSubmit(handleSubmitEndereco)}
                   loading={loading}
                   enabled={!loading}
-                  style={{backgroundColor: '#a0bbe980'}}
+                  style={{ backgroundColor: "#a0bbe980" }}
                 />
               </ContentButton>
             </Form>
@@ -132,4 +111,4 @@ const TelaCrudFormCorretor = () => {
   );
 };
 
-export default TelaCrudFormCorretor;
+export default TelaCrudFormEndereco;
