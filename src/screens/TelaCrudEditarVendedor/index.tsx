@@ -126,7 +126,7 @@ const TelaCrudEditarVendedor = () => {
                   onPress={() => navigation.goBack()}
                   loading={loading}
                   enabled={!loading}
-                  style={{ backgroundColor: "red", marginLeft: 10 }}
+                  style={{ backgroundColor: "transparent", marginLeft: 10 }}
                 />
               </ContentButton>
             </Form>
