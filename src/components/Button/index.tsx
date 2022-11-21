@@ -30,7 +30,7 @@ const Button: React.FC<IProps> = ({
       {loading ? (
         <ActivityIndicator color={theme.colors.background} />
       ) : (
-        <Title style={{color: titleColor ? titleColor : theme.colors.background}}>{title}</Title>
+        <Title style={{color: titleColor ? titleColor : theme.colors.primary}}>{title}</Title>
       )}
     </Container>
   );

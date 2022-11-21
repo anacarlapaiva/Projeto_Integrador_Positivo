@@ -54,5 +54,7 @@ export const ContainerFunctions = styled.View`
 
 export const ContentAdd = styled.View`
   width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
 `;
 

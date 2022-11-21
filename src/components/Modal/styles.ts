@@ -14,7 +14,6 @@ export const ContentModal = styled.View`
 
 export const ModalElement = styled.View`
   background-color: #a7c6da;
-  margin: ${RFValue(20)}px;
   padding: ${RFValue(20)}px;
   border-radius: 8px;
   height: 99%;
@@ -30,3 +29,4 @@ export const ButtonElement = styled.Button`
 export const Vector = styled(AntDesign)`
   color: ${({ theme }) => theme.colors.primary};
 `;
+
