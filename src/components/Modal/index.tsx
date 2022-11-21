@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, Modal } from "react-native";
+import {  Modal } from "react-native";
 import Button from "../Button";
 import { Content, ContentModal, ModalElement } from "./styles";
 

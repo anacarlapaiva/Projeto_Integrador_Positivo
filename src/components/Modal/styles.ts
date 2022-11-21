@@ -5,7 +5,6 @@ import styled from "styled-components/native";
 export const Content = styled.View`
   flex-direction: column;
   align-items: center;
-  margin-top: ${RFValue(35)}px;
 `;
 
 export const ContentModal = styled.View`
@@ -18,8 +17,8 @@ export const ModalElement = styled.View`
   margin: ${RFValue(20)}px;
   padding: ${RFValue(20)}px;
   border-radius: 8px;
-  height: 95%;
-  width: 90%;
+  height: 99%;
+  width: 100%;
 `;
 
 export const ButtonElement = styled.Button`

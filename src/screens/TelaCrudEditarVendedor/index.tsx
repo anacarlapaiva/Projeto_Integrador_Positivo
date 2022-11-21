@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Button from "../../components/Button";
-import Header from "../../components/Header";
 import InputForm from "../../components/InputForm";
 import {
   Container,
@@ -62,7 +61,6 @@ const TelaCrudEditarVendedor = () => {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
-          <Header />
 
           <ContentSubMenu>
             <TitlePage>Editar Vendedor</TitlePage>
