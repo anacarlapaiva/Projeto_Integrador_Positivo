@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {  Modal } from "react-native";
+import { Modal } from "react-native";
 import Button from "../Button";
 import { Content, ContentModal, ModalElement } from "./styles";
 
@@ -16,6 +16,13 @@ const ModalContent: React.FC<IModalProps> = ({ children, title }) => {
       <Modal animationType="fade" visible={visible}>
         <ContentModal>
           <ModalElement>
+            <Button
+              title="Fechar modal"
+              onPress={() => {
+                setVisible(false);
+                console.log("aaaaaaaa");
+              }}
+            />
             {children}
           </ModalElement>
         </ContentModal>
@@ -24,7 +31,7 @@ const ModalContent: React.FC<IModalProps> = ({ children, title }) => {
         title={title}
         onPress={() => {
           setVisible(true);
-          console.log('aaaaaaaa')
+          console.log("aaaaaaaa");
         }}
       />
     </Content>

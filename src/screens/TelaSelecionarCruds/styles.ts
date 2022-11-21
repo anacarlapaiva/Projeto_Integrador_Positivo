@@ -1,5 +1,5 @@
-import styled from 'styled-components/native';
-import { RFValue } from 'react-native-responsive-fontsize';
+import styled from "styled-components/native";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { AntDesign } from "@expo/vector-icons";
 
 export const Container = styled.View`
@@ -27,7 +27,7 @@ export const SeeAll = styled.Text`
 `;
 
 export const Right = styled(AntDesign)`
-  color: ${({ theme }) => theme.colors.primary};
+  margin-left: ${RFValue(15)}px;
 `;
 
 export const ContentStore = styled.View`
@@ -46,10 +46,10 @@ export const ButtonOptions = styled.Text`
 `;
 
 export const ContentSelect = styled.View`
-    flex-direction: row;
+  flex-direction: row;
 `;
 export const ContainerFunctions = styled.View`
-    flex-direction: row;
+  flex-direction: row;
 `;
 
 export const ContentAdd = styled.View`
@@ -58,3 +58,19 @@ export const ContentAdd = styled.View`
   align-items: flex-start;
 `;
 
+export const ContentList = styled.View`
+  width: 100%;
+  flex-direction: row;
+`;
+
+export const ContentOptions = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+`;
+
+export const TextList = styled.Text`
+  margin-top: ${RFValue(15)}px;
+  font-size: ${RFValue(17)}px;
+`;

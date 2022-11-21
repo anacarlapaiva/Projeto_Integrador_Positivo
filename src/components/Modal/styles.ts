@@ -16,7 +16,7 @@ export const ModalElement = styled.View`
   background-color: #a7c6da;
   padding: ${RFValue(20)}px;
   border-radius: 8px;
-  height: 99%;
+  height: 100%;
   width: 100%;
 `;
 
