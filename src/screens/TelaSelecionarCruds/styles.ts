@@ -52,4 +52,7 @@ export const ContainerFunctions = styled.View`
     flex-direction: row;
 `;
 
+export const ContentAdd = styled.View`
+  width: 100%;
+`;
 

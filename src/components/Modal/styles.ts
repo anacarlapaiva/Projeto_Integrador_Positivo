@@ -5,7 +5,6 @@ import styled from "styled-components/native";
 export const Content = styled.View`
   flex-direction: column;
   align-items: center;
-  margin-top: ${RFValue(35)}px;
 `;
 
 export const ContentModal = styled.View`

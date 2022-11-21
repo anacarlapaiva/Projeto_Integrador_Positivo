@@ -15,6 +15,7 @@ import {
   ButtonOptions,
   Container,
   ContainerFunctions,
+  ContentAdd,
   ContentSelect,
   ContentStore,
   ContentSubMenu,
@@ -87,9 +88,9 @@ const TelaSelecionarCruds = () => {
                 </SeeAll>
               </ContentSubMenu>
               <ContainerFunctions>
-                <ContentSelect>
+                <ContentAdd>
                   <ModalContent children={<TelaCrudEditarVendedor />} title="Adicionar usuário" />
-                </ContentSelect>
+                </ContentAdd>
                 <ContentSelect>
                   <Right name="edit" size={24}  />
                   <ButtonOptions onPress={handleChangeStore}>Editar</ButtonOptions>
