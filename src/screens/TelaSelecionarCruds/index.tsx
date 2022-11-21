@@ -11,6 +11,8 @@ import { ScrollView } from "react-native-gesture-handler";
 import Header from "../../components/Header";
 import ModalContent from "../../components/Modal";
 import TelaCrudEditarVendedor from "../TelaCrudEditarVendedor";
+import TelaCrudFormCorretor from "../TelaCrudFormCorretor";
+import TelaCrudFormImovel from "../TelaCrudFormImovel";
 import {
   ButtonOptions,
   Container,
@@ -32,7 +34,6 @@ const TelaSelecionarCruds = () => {
     //@ts-ignore
     navigation.navigate("TelaCrudEditarVendedor");
   };
-
 
   return (
     <KeyboardAvoidingView
@@ -89,11 +90,16 @@ const TelaSelecionarCruds = () => {
               </ContentSubMenu>
               <ContainerFunctions>
                 <ContentAdd>
-                  <ModalContent children={<TelaCrudEditarVendedor />} title="Adicionar usuário" />
+                  <ModalContent
+                    children={<TelaCrudEditarVendedor />}
+                    title="Adicionar usuário"
+                  />
                 </ContentAdd>
                 <ContentSelect>
-                  <Right name="edit" size={24}  />
-                  <ButtonOptions onPress={handleChangeStore}>Editar</ButtonOptions>
+                  <Right name="edit" size={24} />
+                  <ButtonOptions onPress={handleChangeStore}>
+                    Editar
+                  </ButtonOptions>
                 </ContentSelect>
                 <ContentSelect>
                   <Right name="delete" size={24} />
@@ -113,7 +119,12 @@ const TelaSelecionarCruds = () => {
                   Voltar
                 </SeeAll>
               </ContentSubMenu>
-              <Text>teste3</Text>
+              <ContentAdd>
+                <ModalContent
+                  children={<TelaCrudFormCorretor />}
+                  title="Adicionar corretor"
+                />
+              </ContentAdd>
             </ScrollView>
           )}
           {step === 4 && (
@@ -124,7 +135,12 @@ const TelaSelecionarCruds = () => {
                   Voltar
                 </SeeAll>
               </ContentSubMenu>
-              <Text>teste4</Text>
+              <ContentAdd>
+                <ModalContent
+                  children={<TelaCrudFormImovel />}
+                  title="Adicionar Imóvel"
+                />
+              </ContentAdd>
             </ScrollView>
           )}
           {step === 5 && (
@@ -132,7 +148,7 @@ const TelaSelecionarCruds = () => {
               <ContentSubMenu>
                 <TitlePage>Escolha sua opção</TitlePage>
                 <SeeAll onPress={() => setStep((prev) => prev - 4)}>
-                  voltar{" "}
+                  voltar
                 </SeeAll>
               </ContentSubMenu>
               <Text>teste 5</Text>
