@@ -19,11 +19,13 @@ import {
   ContainerFunctions,
   ContentAdd,
   ContentList,
+  ContentOptions,
   ContentSelect,
   ContentStore,
   ContentSubMenu,
   Right,
   SeeAll,
+  TextList,
   TitlePage,
 } from "./styles";
 
@@ -103,23 +105,22 @@ const TelaSelecionarCruds = () => {
                     children={<TelaCrudEditarVendedor />}
                     title="Adicionar usuário"
                   />
-                  <ContentList>
-                    {teste.map((nome) => nome.nome)}
-                  </ContentList>
+                  <ScrollView alwaysBounceVertical>
+                    {teste?.map(function (nome) {
+                      return (
+                        <ContentList>
+                          <ContentOptions>
+                            <TextList>{nome.nome}</TextList>
+                            <ContentSelect>
+                              <Right name="edit" size={24} />
+                              <Right name="delete" size={24} color="red" />
+                            </ContentSelect>
+                          </ContentOptions>
+                        </ContentList>
+                      );
+                    })}
+                  </ScrollView>
                 </ContentAdd>
-                <ContentSelect>
-                  <Right name="edit" size={24} />
-                  <ButtonOptions onPress={handleChangeStore}>
-                    Editar
-                  </ButtonOptions>
-                </ContentSelect>
-                <ContentSelect>
-                  <Right name="delete" size={24} />
-
-                  <ButtonOptions style={{ color: "red" }}>
-                    Deletar
-                  </ButtonOptions>
-                </ContentSelect>
               </ContainerFunctions>
             </ScrollView>
           )}
