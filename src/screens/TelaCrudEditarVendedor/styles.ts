@@ -5,6 +5,7 @@ export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
   padding: 0 30px;
+  border-radius: 8px;
 `;
 
 export const ContentSubMenu = styled.View`
@@ -34,6 +35,6 @@ export const Fields = styled.View``;
 
 export const ContentButton = styled.View`
     flex-direction: row;
-    width: 49%;
+    width: 100%;
 `;
 

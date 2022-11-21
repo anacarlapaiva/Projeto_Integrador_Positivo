@@ -35,6 +35,11 @@ const TelaCrudEditarVendedor = () => {
 
   const { control, handleSubmit } = useForm();
 
+  const handleBack = () => {
+    //@ts-ignore
+    navigation.navigate("LocationScreen");
+  };
+
   const handleSubmitVendedor = async (form: Partial<IEditarVendedor>) => {
     try {
       setLoading(true);
@@ -46,7 +51,7 @@ const TelaCrudEditarVendedor = () => {
         telefone: form.telefone,
         nascimento: form.nascimento,
       };
-      console.log(payload)
+      console.log(payload);
     } catch {
       setLoading(false);
     } finally {
@@ -61,10 +66,8 @@ const TelaCrudEditarVendedor = () => {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
-
           <ContentSubMenu>
-            <TitlePage>Editar Vendedor</TitlePage>
-            <SeeAll onPress={() => navigation.goBack()}>Voltar</SeeAll>
+            <TitlePage>Adicionar Vendedor</TitlePage>
           </ContentSubMenu>
           <ScrollView>
             <Form>
@@ -119,14 +122,7 @@ const TelaCrudEditarVendedor = () => {
                   onPress={handleSubmit(handleSubmitVendedor)}
                   loading={loading}
                   enabled={!loading}
-                />
-
-                <Button
-                  title="Cancelar"
-                  onPress={() => navigation.goBack()}
-                  loading={loading}
-                  enabled={!loading}
-                  style={{ backgroundColor: "transparent", marginLeft: 10 }}
+                  style={{backgroundColor: '#a0bbe980'}}
                 />
               </ContentButton>
             </Form>
