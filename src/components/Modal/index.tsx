@@ -16,12 +16,6 @@ const ModalContent: React.FC<IModalProps> = ({ children, title }) => {
       <Modal animationType="fade" visible={visible}>
         <ContentModal>
           <ModalElement>
-            <Button
-              title="Fechar"
-              onPress={() => {
-                setVisible(false);
-              }}
-            />
             {children}
           </ModalElement>
         </ContentModal>
