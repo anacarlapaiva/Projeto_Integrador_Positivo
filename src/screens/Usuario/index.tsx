@@ -1,8 +1,27 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { Keyboard, KeyboardAvoidingView, Platform, ScrollView, Text, TouchableWithoutFeedback } from "react-native";
+import {
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  Text,
+  TouchableWithoutFeedback,
+} from "react-native";
 import ModalContent from "../../components/Modal";
-import { ButtonOptions, Container, ContainerFunctions, ContentAdd, ContentSelect, ContentStore, ContentSubMenu, EditUser, Right, SeeAll, TitlePage } from "./styles";
+import {
+  ButtonOptions,
+  Container,
+  ContainerFunctions,
+  ContentAdd,
+  ContentSelect,
+  ContentStore,
+  ContentSubMenu,
+  EditUser,
+  Right,
+  SeeAll,
+  TitlePage,
+} from "./styles";
 
 const Usuario = () => {
   const [step, setStep] = useState(1);
@@ -14,40 +33,15 @@ const Usuario = () => {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
-
           <EditUser>Editar Usuário</EditUser>
           {step === 1 && (
             <ScrollView>
               <ContentStore>
-                <Text>Vendedor</Text>
+                <Text>Editar dados</Text>
                 <Right
                   name="right"
                   size={24}
                   onPress={() => setStep((prev) => prev + 1)}
-                />
-              </ContentStore>
-              <ContentStore>
-                <Text>Corretor</Text>
-                <Right
-                  name="right"
-                  size={24}
-                  onPress={() => setStep((prev) => prev + 2)}
-                />
-              </ContentStore>
-              <ContentStore>
-                <Text>Imóvel</Text>
-                <Right
-                  name="right"
-                  size={24}
-                  onPress={() => setStep((prev) => prev + 3)}
-                />
-              </ContentStore>
-              <ContentStore>
-                <Text>Categoria</Text>
-                <Right
-                  name="right"
-                  size={24}
-                  onPress={() => setStep((prev) => prev + 4)}
                 />
               </ContentStore>
             </ScrollView>
@@ -62,14 +56,10 @@ const Usuario = () => {
                 </SeeAll>
               </ContentSubMenu>
               <ContainerFunctions>
-                <ContentAdd>
-             
-                </ContentAdd>
+                <ContentAdd></ContentAdd>
                 <ContentSelect>
                   <Right name="edit" size={24} />
-                  <ButtonOptions>
-                    Editar
-                  </ButtonOptions>
+                  <ButtonOptions>Editar</ButtonOptions>
                 </ContentSelect>
                 <ContentSelect>
                   <Right name="delete" size={24} />
@@ -89,9 +79,7 @@ const Usuario = () => {
                   Voltar
                 </SeeAll>
               </ContentSubMenu>
-              <ContentAdd>
-             
-              </ContentAdd>
+              <ContentAdd></ContentAdd>
             </ScrollView>
           )}
           {step === 4 && (
@@ -102,9 +90,7 @@ const Usuario = () => {
                   Voltar
                 </SeeAll>
               </ContentSubMenu>
-              <ContentAdd>
-        
-              </ContentAdd>
+              <ContentAdd></ContentAdd>
             </ScrollView>
           )}
           {step === 5 && (
