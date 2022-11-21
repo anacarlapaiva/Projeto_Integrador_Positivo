@@ -10,12 +10,10 @@ interface IProps {
 export const Container = styled(RectButton)<IProps>`
   width: 100%;
   height: ${RFValue(54)}px;
-  background-color: ${({ theme, disabledStyle }) =>
-    disabledStyle ? theme.colors.primary_light : theme.colors.primary};
+  background-color: transparent;
   border-radius: 8px;
   align-items: center;
   justify-content: center;
-  margin-top: 16px;
 `;
 
 export const Title = styled.Text`
