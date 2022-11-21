@@ -18,6 +18,7 @@ import {
   Container,
   ContainerFunctions,
   ContentAdd,
+  ContentList,
   ContentSelect,
   ContentStore,
   ContentSubMenu,
@@ -25,6 +26,14 @@ import {
   SeeAll,
   TitlePage,
 } from "./styles";
+
+const teste = [
+  { nome: "João Bobão" },
+  { nome: "Camila Pereira " },
+  { nome: "Lucas Abreu" },
+  { nome: "Pedro Henrique " },
+  { nome: "Manoela Almeida" },
+];
 
 const TelaSelecionarCruds = () => {
   const [step, setStep] = useState(1);
@@ -94,6 +103,9 @@ const TelaSelecionarCruds = () => {
                     children={<TelaCrudEditarVendedor />}
                     title="Adicionar usuário"
                   />
+                  <ContentList>
+                    {teste.map((nome) => nome.nome)}
+                  </ContentList>
                 </ContentAdd>
                 <ContentSelect>
                   <Right name="edit" size={24} />

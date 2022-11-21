@@ -1,5 +1,5 @@
-import styled from 'styled-components/native';
-import { RFValue } from 'react-native-responsive-fontsize';
+import styled from "styled-components/native";
+import { RFValue } from "react-native-responsive-fontsize";
 import { AntDesign } from "@expo/vector-icons";
 
 export const Container = styled.View`
@@ -46,10 +46,10 @@ export const ButtonOptions = styled.Text`
 `;
 
 export const ContentSelect = styled.View`
-    flex-direction: row;
+  flex-direction: row;
 `;
 export const ContainerFunctions = styled.View`
-    flex-direction: row;
+  flex-direction: row;
 `;
 
 export const ContentAdd = styled.View`
@@ -58,3 +58,6 @@ export const ContentAdd = styled.View`
   align-items: flex-start;
 `;
 
+export const ContentList = styled.Text`
+  flex-direction: column;
+`;
