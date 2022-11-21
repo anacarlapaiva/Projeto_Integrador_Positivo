@@ -18,8 +18,8 @@ export const ModalElement = styled.View`
   margin: ${RFValue(20)}px;
   padding: ${RFValue(20)}px;
   border-radius: 8px;
-  height: 95%;
-  width: 90%;
+  height: 99%;
+  width: 100%;
 `;
 
 export const ButtonElement = styled.Button`

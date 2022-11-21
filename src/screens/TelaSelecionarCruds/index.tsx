@@ -88,9 +88,6 @@ const TelaSelecionarCruds = () => {
               </ContentSubMenu>
               <ContainerFunctions>
                 <ContentSelect>
-                  <Right name="adduser" size={24} />
-                  <ButtonOptions>Adicionar</ButtonOptions>
-
                   <ModalContent children={<TelaCrudEditarVendedor />} title="Adicionar usuário" />
                 </ContentSelect>
                 <ContentSelect>

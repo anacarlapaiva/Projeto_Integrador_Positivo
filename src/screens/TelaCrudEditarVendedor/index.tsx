@@ -62,7 +62,6 @@ const TelaCrudEditarVendedor = () => {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
-          <Header />
 
           <ContentSubMenu>
             <TitlePage>Editar Vendedor</TitlePage>
