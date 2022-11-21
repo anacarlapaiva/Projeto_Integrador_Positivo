@@ -18,6 +18,8 @@ import {
 } from "./styles";
 
 import FotoExemplo from "../../assets/example.png";
+import ModalContent from "../../components/Modal";
+import TelaCrudFormImovel from "../TelaCrudFormImovel";
 
 const TelaImobiliaria = () => {
   return (
@@ -30,7 +32,10 @@ const TelaImobiliaria = () => {
           <Header />
           <ContentSubMenu>
             <TitlePage>Imobiliária</TitlePage>
-            <SeeAll>cadastrar</SeeAll>
+            <ModalContent
+              children={<TelaCrudFormImovel />}
+              title="cadastrar"
+            />
             <SeeAll>editar</SeeAll>
           </ContentSubMenu>
 
