@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -46,8 +47,10 @@ const TelaCrudEditarVendedor = ({
       };
       await api.get("");
       console.log(payload);
+      Alert.alert("Vendedor adicionado com sucesso");
     } catch (err) {
       console.log(err);
+      Alert.alert("Erro ao adicionar");
     } finally {
       setLoading(false);
     }
