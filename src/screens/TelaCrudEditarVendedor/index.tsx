@@ -68,8 +68,10 @@ const TelaCrudEditarVendedor = ({
         nascimento: form.nascimento ? form.nascimento : seller?.nascimento,
       };
       console.log(payload);
+      Alert.alert("Vendedor editado com sucesso");
     } catch (err) {
       console.log(err);
+      Alert.alert("Erro ao editar");
     } finally {
       setLoading(false);
     }

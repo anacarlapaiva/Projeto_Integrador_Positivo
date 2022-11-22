@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -43,8 +44,10 @@ const TelaFormImobiliaria = ({ imobiliaria, type }: ITelaImobiliaria) => {
       };
       console.log(payload);
       console.log("adicionou");
+      Alert.alert("Adicionado com sucesso");
     } catch (err) {
       console.log(err);
+      Alert.alert("Erro ao adicionar");
     } finally {
       setLoading(false);
     }
@@ -66,8 +69,10 @@ const TelaFormImobiliaria = ({ imobiliaria, type }: ITelaImobiliaria) => {
       };
       console.log(payload);
       console.log("editou");
+      Alert.alert("Editado com sucesso");
     } catch (err) {
       console.log(err);
+      Alert.alert("Erro ao editar");
     } finally {
       setLoading(false);
     }

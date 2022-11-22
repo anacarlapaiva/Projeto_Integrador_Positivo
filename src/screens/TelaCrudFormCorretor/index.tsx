@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -43,8 +44,10 @@ const TelaCrudEditarVendedor = ({
         nascimento: form.data,
       };
       console.log(payload);
+      Alert.alert("Adicionado com sucesso");
     } catch (err) {
       console.log(err);
+      Alert.alert("Erro ao adicionar");
     } finally {
       setLoading(false);
     }
@@ -62,8 +65,10 @@ const TelaCrudEditarVendedor = ({
         nascimento: form.data ? form.data : corrector?.data,
       };
       console.log(payload);
+      Alert.alert("Editado com sucesso");
     } catch (err) {
       console.log(err);
+      Alert.alert("Erro ao editar");
     } finally {
       setLoading(false);
     }
@@ -77,7 +82,7 @@ const TelaCrudEditarVendedor = ({
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
           <ContentSubMenu>
-          {type === "ADD" ? (
+            {type === "ADD" ? (
               <TitlePage>Adicionar corretor</TitlePage>
             ) : (
               <TitlePage>Editar corretor</TitlePage>

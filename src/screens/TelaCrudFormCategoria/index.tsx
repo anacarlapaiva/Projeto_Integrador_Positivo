@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -39,8 +40,10 @@ const TelaCrudEditarCategoria = ({
         descricao: form.descricao,
       };
       console.log(payload);
+      Alert.alert("Adicionado com sucesso");
     } catch (err) {
       console.log(err);
+      Alert.alert("Erro ao adicionar");
     } finally {
       setLoading(false);
     }
@@ -54,8 +57,10 @@ const TelaCrudEditarCategoria = ({
         descricao: form.descricao ? form.descricao : categoria?.descricao,
       };
       console.log(payload);
+      Alert.alert("Editado com sucesso");
     } catch (err) {
       console.log(err);
+      Alert.alert("Erro ao adicionar");
     } finally {
       setLoading(false);
     }

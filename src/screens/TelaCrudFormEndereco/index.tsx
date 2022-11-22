@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -43,8 +44,10 @@ const TelaCrudEditarEndereco = ({
         uf: form.uf,
       };
       console.log(payload);
+      Alert.alert("Adicionado com sucesso");
     } catch (err) {
       console.log(err);
+      Alert.alert("Erro ao adicionar");
     } finally {
       setLoading(false);
     }
@@ -62,8 +65,10 @@ const TelaCrudEditarEndereco = ({
         uf: form.uf ? form.uf : endereco?.uf,
       };
       console.log(payload);
+      Alert.alert("Editado com sucesso");
     } catch (err) {
       console.log(err);
+      Alert.alert("Erro ao editar");
     } finally {
       setLoading(false);
     }

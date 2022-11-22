@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -39,8 +40,10 @@ const TelaCrudFormimovel = ({ imovel, type }: ITelaCrudEditarimovelProps) => {
         status: form.status,
       };
       console.log(payload);
+      Alert.alert("Adicionado com sucesso");
     } catch (err) {
       console.log(err);
+      Alert.alert("Erro ao adicionar");
     } finally {
       setLoading(false);
     }
@@ -61,8 +64,10 @@ const TelaCrudFormimovel = ({ imovel, type }: ITelaCrudEditarimovelProps) => {
         status: form.status ? form.status : imovel?.status,
       };
       console.log(payload);
+      Alert.alert("Editado com sucesso");
     } catch (err) {
       console.log(err);
+      Alert.alert("Erro ao editar");
     } finally {
       setLoading(false);
     }
