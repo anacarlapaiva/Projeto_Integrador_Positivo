@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   Keyboard,
@@ -10,6 +10,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import { ISellerData } from "../../@types/Seller";
 import Button from "../../components/Button";
 import InputForm from "../../components/InputForm";
+import api from "../../services/api";
 import {
   Container,
   ContentButton,
@@ -43,6 +44,7 @@ const TelaCrudEditarVendedor = ({
         telefone: form.telefone,
         nascimento: form.nascimento,
       };
+      await api.get("");
       console.log(payload);
     } catch (err) {
       console.log(err);
