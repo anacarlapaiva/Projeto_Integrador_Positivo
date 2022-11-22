@@ -19,7 +19,6 @@ export const TitlePage = styled.Text`
   font-size: ${RFValue(16)}px;
   color: ${({ theme }) => theme.colors.title};
   font-weight: bold;
-  margin-top: 50px;
 `;
 
 export const SeeAll = styled.Text`
