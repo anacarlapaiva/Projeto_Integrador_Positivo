@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import { ISellerData } from "../../@types/Seller";
 import Header from "../../components/Header";
 import ModalContent from "../../components/Modal";
 import TelaCrudEditarVendedor from "../TelaCrudEditarVendedor";
@@ -29,16 +30,22 @@ import {
   TitlePage,
 } from "./styles";
 
-const teste = [
-  { nome: "João Bobão" },
-  { nome: "Camila Pereira " },
-  { nome: "Lucas Abreu" },
-  { nome: "Pedro Henrique " },
-  { nome: "Manoela Almeida" },
-];
-
 const TelaSelecionarCruds = () => {
   const [step, setStep] = useState(1);
+  const [sellers, setSellers] = useState<ISellerData[]>([
+    { nome: "João Bobão" },
+    { nome: "Camila Pereira " },
+    { nome: "Lucas Abreu" },
+    { nome: "Pedro Henrique " },
+    { nome: "Manoela Almeida" },
+  ]);
+  const [correctors, setCorrectors] = useState<ICorrectorData[]>([
+    { nome: "João Bobão" },
+    { nome: "Camila Pereira " },
+    { nome: "Lucas Abreu" },
+    { nome: "Pedro Henrique " },
+    { nome: "Manoela Almeida" },
+  ]);
   const navigation = useNavigation();
 
   const handleChangeStore = () => {
@@ -102,17 +109,26 @@ const TelaSelecionarCruds = () => {
               <ContainerFunctions>
                 <ContentAdd>
                   <ModalContent
-                    children={<TelaCrudEditarVendedor />}
+                    children={<TelaCrudEditarVendedor type="ADD" />}
                     title="Adicionar usuário"
                   />
+
                   <ScrollView alwaysBounceVertical>
-                    {teste?.map(function (nome) {
+                    {sellers?.map((seller) => {
                       return (
                         <ContentList>
                           <ContentOptions>
-                            <TextList>{nome.nome}</TextList>
+                            <TextList>{seller.nome}</TextList>
                             <ContentSelect>
-                              <Right name="edit" size={24} />
+                              <ModalContent
+                                children={
+                                  <TelaCrudEditarVendedor
+                                    seller={seller}
+                                    type="EDIT"
+                                  />
+                                }
+                                title="Editar"
+                              />
                               <Right name="delete" size={24} color="red" />
                             </ContentSelect>
                           </ContentOptions>
@@ -134,9 +150,33 @@ const TelaSelecionarCruds = () => {
               </ContentSubMenu>
               <ContentAdd>
                 <ModalContent
-                  children={<TelaCrudFormCorretor />}
+                  children={<TelaCrudFormCorretor type="ADD" />}
                   title="Adicionar corretor"
                 />
+
+                <ScrollView alwaysBounceVertical>
+                  {correctors?.map((corrector) => {
+                    return (
+                      <ContentList>
+                        <ContentOptions>
+                          <TextList>{corrector.nome}</TextList>
+                          <ContentSelect>
+                            <ModalContent
+                              children={
+                                <TelaCrudFormCorretor
+                                  corrector={corrector}
+                                  type="EDIT"
+                                />
+                              }
+                              title="Editar"
+                            />
+                            <Right name="delete" size={24} color="red" />
+                          </ContentSelect>
+                        </ContentOptions>
+                      </ContentList>
+                    );
+                  })}
+                </ScrollView>
               </ContentAdd>
             </ScrollView>
           )}

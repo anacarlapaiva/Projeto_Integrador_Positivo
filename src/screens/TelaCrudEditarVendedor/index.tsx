@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import { ISellerData } from "../../@types/Seller";
 import Button from "../../components/Button";
 import InputForm from "../../components/InputForm";
 import {
@@ -20,16 +21,12 @@ import {
   TitlePage,
 } from "./styles";
 
-interface IEditarVendedor {
-  documento: string;
-  nome: string;
-  imoveis: any;
-  endereco: string;
-  telefone: string;
-  nascimento: any;
+interface ITelaCrudEditarVendedorProps {
+  type: "ADD" | "EDIT";
+  seller?: ISellerData;
 }
 
-const TelaCrudEditarVendedor = () => {
+const TelaCrudEditarVendedor = ({ seller, type }: ITelaCrudEditarVendedorProps) => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
 
@@ -38,9 +35,9 @@ const TelaCrudEditarVendedor = () => {
   const handleBack = () => {
     //@ts-ignore
     navigation.navigate("LocationScreen");
-  };
+  }; 
 
-  const handleSubmitVendedor = async (form: Partial<IEditarVendedor>) => {
+  const handleSubmitSeller = async (form: Partial<ISellerData>) => {
     try {
       setLoading(true);
       const payload = {
@@ -52,12 +49,31 @@ const TelaCrudEditarVendedor = () => {
         nascimento: form.nascimento,
       };
       console.log(payload);
-    } catch {
-      setLoading(false);
+    } catch(err) {
+      console.log(err);
     } finally {
       setLoading(false);
     }
   };
+
+  const handleEditSeller = async (form: Partial<ISellerData>) => {
+    try {
+      setLoading(true);
+      const payload = {
+        documento: form.documento ? form.documento : seller?.documento,
+        nome: form.nome ? form.nome : seller?.nome,
+        imoveis: form.imoveis ? form.imoveis : seller?.imoveis,
+        endereco: form.endereco ? form.endereco : seller?.endereco,
+        telefone: form.telefone ? form.telefone : seller?.telefone,
+        nascimento: form.nascimento ? form.nascimento : seller?.nascimento,
+      };
+      console.log(payload);
+    } catch(err) {
+      console.log(err)
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <KeyboardAvoidingView
@@ -85,6 +101,7 @@ const TelaCrudEditarVendedor = () => {
                   control={control}
                   autoCorrect={false}
                   keyboardType="default"
+                  defaultValue={seller?.nome}
                 />
                 <InputForm
                   placeholder="Imóveis cadastrados"
@@ -119,7 +136,7 @@ const TelaCrudEditarVendedor = () => {
               <ContentButton>
                 <Button
                   title="Enviar"
-                  onPress={handleSubmit(handleSubmitVendedor)}
+                  onPress={handleSubmit(type === "ADD" ? handleSubmitSeller : handleEditSeller)}
                   loading={loading}
                   enabled={!loading}
                   style={{backgroundColor: '#a0bbe980'}}

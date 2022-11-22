@@ -20,29 +20,31 @@ import {
   TitlePage,
 } from "./styles";
 
-interface ITelaCrudEditarVendedorProps {
+interface ITelaImobiliaria {
   type: "ADD" | "EDIT";
-  corrector?: ICorrectorData;
+  imobiliaria?: IImobiliariaData;
 }
 
-const TelaCrudEditarVendedor = ({
-  corrector,
+const TelaFormImobiliaria = ({
+  imobiliaria,
   type,
-}: ITelaCrudEditarVendedorProps) => {
+}: ITelaImobiliaria) => {
   const [loading, setLoading] = useState(false);
 
   const { control, handleSubmit } = useForm();
 
-  const handleSubmitCorrector = async (form: Partial<ICorrectorData>) => {
+  const handleSubmitImobiliaria = async (form: Partial<IImobiliariaData>) => {
     try {
       setLoading(true);
       const payload = {
-        documento: form.documento,
-        nome: form.nome,
-        imoveis: form.creci,
-        endereco: form.endereco,
-        telefone: form.telefone,
-        nascimento: form.data,
+        id: form.id,
+        cnpj: form.cnpj,
+        cep: form.cep,
+        logradouro: form.logradouro,
+        bairro: form.bairro,
+        cidade: form.cidade,
+        uf: form.uf,
+        creciVendedor: form.creciVendedor,
       };
       console.log(payload);
     } catch (err) {
@@ -52,16 +54,17 @@ const TelaCrudEditarVendedor = ({
     }
   };
 
-  const handleEditCorrector = async (form: Partial<ICorrectorData>) => {
+  const handleEditImobiliaria = async (form: Partial<IImobiliariaData>) => {
     try {
       setLoading(true);
       const payload = {
-        documento: form.documento ? form.documento : corrector?.documento,
-        nome: form.nome ? form.nome : corrector?.nome,
-        imoveis: form.creci ? form.creci : corrector?.creci,
-        endereco: form.endereco ? form.endereco : corrector?.endereco,
-        telefone: form.telefone ? form.telefone : corrector?.telefone,
-        nascimento: form.data ? form.data : corrector?.data,
+        id: form.id ? form.id : imobiliaria?.id,
+        cnpj: form.cnpj ? form.cnpj : imobiliaria?.cnpj,
+        logradouro: form.logradouro ? form.logradouro : imobiliaria?.logradouro,
+        bairro: form.bairro ? form.bairro : imobiliaria?.bairro,
+        cidade: form.cidade ? form.cidade : imobiliaria?.cidade,
+        uf: form.uf ? form.uf : imobiliaria?.uf,
+        creciVendedor: form.creciVendedor ? form.creciVendedor : imobiliaria?.creciVendedor,
       };
       console.log(payload);
     } catch (err) {
@@ -79,50 +82,64 @@ const TelaCrudEditarVendedor = ({
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
           <ContentSubMenu>
-            <TitlePage>Adicionar Corretor</TitlePage>
+            <TitlePage>Adicionar</TitlePage>
           </ContentSubMenu>
           <ScrollView>
             <Form>
               <Fields>
                 <InputForm
-                  placeholder="Documento"
-                  name="documento"
+                  placeholder="ID"
+                  name="id"
                   control={control}
                   autoCorrect={false}
                   keyboardType="default"
                 />
                 <InputForm
-                  placeholder="Nome"
-                  name="nome"
+                  placeholder="CNPJ"
+                  name="cnpj"
                   control={control}
                   autoCorrect={false}
                   keyboardType="default"
-                  defaultValue={corrector?.nome}
+                  defaultValue={imobiliaria?.cnpj}
+                />
+                <InputForm
+                  placeholder="CEP"
+                  name="cep"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="default"
+                />
+                <InputForm
+                  placeholder="Logradouro"
+                  name="logradouro"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="default"
+                />
+                <InputForm
+                  placeholder="Bairro"
+                  name="bairro"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="default"
+                />
+                <InputForm
+                  placeholder="Cidade"
+                  name="cidade"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="decimal-pad"
+                />
+                <InputForm
+                  placeholder="Estado"
+                  name="cidade"
+                  control={control}
+                  autoCorrect={false}
+                  keyboardType="decimal-pad"
                 />
                 <InputForm
                   placeholder="CRECI"
                   name="creci"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Endereço"
-                  name="endereco"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Telefone"
-                  name="telefone"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Data de nascimento"
-                  name="nascimento"
                   control={control}
                   autoCorrect={false}
                   keyboardType="decimal-pad"
@@ -133,7 +150,7 @@ const TelaCrudEditarVendedor = ({
                 <Button
                   title="Enviar"
                   onPress={handleSubmit(
-                    type === "ADD" ? handleSubmitCorrector : handleEditCorrector
+                    type === "ADD" ? handleSubmitImobiliaria : handleEditImobiliaria
                   )}
                   loading={loading}
                   enabled={!loading}
@@ -148,4 +165,4 @@ const TelaCrudEditarVendedor = ({
   );
 };
 
-export default TelaCrudEditarVendedor;
+export default TelaFormImobiliaria;
