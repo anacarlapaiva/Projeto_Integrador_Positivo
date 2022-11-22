@@ -46,6 +46,16 @@ const TelaImobiliaria = () => {
       uf: "pr",
       creciVendedor: "123",
     },
+    {
+      id: 3,
+      cnpj: "0123456789",
+      cep: "0505050",
+      logradouro: "rua tal 1",
+      bairro: "Mamiorgfsd",
+      cidade: "londrina",
+      uf: "pr",
+      creciVendedor: "55555",
+    },
   ]);
 
   const onDeleteImobiliaria = async (id: number) => {
@@ -77,11 +87,6 @@ const TelaImobiliaria = () => {
             <ViewBox>
               <Box source={FotoExemplo} />
             </ViewBox>
-            <Description>Descrição da imobiliária</Description>
-            <SubDescription>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </SubDescription>
 
             <ScrollView>
               {imobiliaria?.map((imob, key) => {
