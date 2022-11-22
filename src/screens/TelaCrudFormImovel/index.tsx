@@ -66,7 +66,11 @@ const TelaCrudFormImovel = () => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
           <ContentSubMenu>
-            <TitlePage>Adicionar imóvel</TitlePage>
+          {type === "ADD" ? (
+              <TitlePage>Adicionar imóvel</TitlePage>
+            ) : (
+              <TitlePage>Editar imóvel</TitlePage>
+            )}
           </ContentSubMenu>
           <ScrollView>
             <Form>

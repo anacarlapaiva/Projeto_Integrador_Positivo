@@ -79,7 +79,11 @@ const TelaCrudEditarVendedor = ({
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
           <ContentSubMenu>
-            <TitlePage>Adicionar Corretor</TitlePage>
+          {type === "ADD" ? (
+              <TitlePage>Adicionar corretor</TitlePage>
+            ) : (
+              <TitlePage>Editar corretor</TitlePage>
+            )}
           </ContentSubMenu>
           <ScrollView>
             <Form>

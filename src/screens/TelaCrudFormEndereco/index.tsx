@@ -66,7 +66,11 @@ const TelaCrudFormEndereco = () => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
           <ContentSubMenu>
-            <TitlePage>Adicionar endereço</TitlePage>
+          {type === "ADD" ? (
+              <TitlePage>Adicionar endereço</TitlePage>
+            ) : (
+              <TitlePage>Editar endereço</TitlePage>
+            )}
           </ContentSubMenu>
           <ScrollView>
             <Form>

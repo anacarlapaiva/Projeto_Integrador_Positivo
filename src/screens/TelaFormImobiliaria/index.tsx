@@ -82,7 +82,11 @@ const TelaFormImobiliaria = ({
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
           <ContentSubMenu>
-            <TitlePage>Adicionar</TitlePage>
+          {type === "ADD" ? (
+              <TitlePage>Adicionar imobiliária</TitlePage>
+            ) : (
+              <TitlePage>Editar imobiliária</TitlePage>
+            )}
           </ContentSubMenu>
           <ScrollView>
             <Form>

@@ -6,7 +6,6 @@ import {
   KeyboardAvoidingView,
   Platform,
   TouchableWithoutFeedback,
-  
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Button from "../../components/Button";
@@ -17,43 +16,48 @@ import {
   ContentSubMenu,
   Fields,
   Form,
+  SeeAll,
   TitlePage,
 } from "./styles";
 
-interface IEditarCategoria {
-  documento: string;
-  nome: string;
-  imoveis: any;
-  endereco: string;
-  telefone: string;
-  nascimento: any;
+interface ITelaCrudEditarCategoriaProps {
+  type: "ADD" | "EDIT";
+  categoria?: ICategoryData;
 }
 
-const TelaCrudFormCategoria = () => {
+const TelaCrudEditarCategoria = ({
+  categoria,
+  type,
+}: ITelaCrudEditarCategoriaProps) => {
   const [loading, setLoading] = useState(false);
-  const navigation = useNavigation();
 
   const { control, handleSubmit } = useForm();
 
-  const handleBack = () => {
-    //@ts-ignore
-    navigation.navigate("LocationScreen");
-  };
-
-  const handleSubmitCategoria = async (form: Partial<IEditarCategoria>) => {
+  const handleSubmitCategory = async (form: Partial<ICategoryData>) => {
     try {
       setLoading(true);
       const payload = {
-        documento: form.documento,
-        nome: form.nome,
-        imoveis: form.imoveis,
-        endereco: form.endereco,
-        telefone: form.telefone,
-        nascimento: form.nascimento,
+        id: form.id,
+        descricao: form.descricao,
       };
       console.log(payload);
-    } catch {
+    } catch (err) {
+      console.log(err);
+    } finally {
       setLoading(false);
+    }
+  };
+
+  const handleEditCategory = async (form: Partial<ICategoryData>) => {
+    try {
+      setLoading(true);
+      const payload = {
+        id: form.id ? form.id : categoria?.id,
+        descricao: form.descricao ? form.descricao : categoria?.descricao,
+      };
+      console.log(payload);
+    } catch (err) {
+      console.log(err);
     } finally {
       setLoading(false);
     }
@@ -67,37 +71,49 @@ const TelaCrudFormCategoria = () => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
           <ContentSubMenu>
-            <TitlePage>Adicionar imóvel</TitlePage>
+            {type === "ADD" ? (
+              <TitlePage>Adicionar categoria</TitlePage>
+            ) : (
+              <TitlePage>Editar categoria</TitlePage>
+            )}
           </ContentSubMenu>
           <ScrollView>
             <Form>
               <Fields>
-                <InputForm
-                  placeholder="ID"
-                  name="id"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Descrição"
-                  name="descricao"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-               
-              </Fields>
+                <ScrollView>
+                  <Form>
+                    <Fields>
+                      <InputForm
+                        placeholder="ID"
+                        name="id"
+                        control={control}
+                        autoCorrect={false}
+                        keyboardType="default"
+                      />
+                      <InputForm
+                        placeholder="Descrição"
+                        name="descricao"
+                        control={control}
+                        autoCorrect={false}
+                        keyboardType="default"
+                      />
+                    </Fields>
 
-              <ContentButton>
-                <Button
-                  title="Enviar"
-                  onPress={handleSubmit(handleSubmitCategoria)}
-                  loading={loading}
-                  enabled={!loading}
-                  style={{ backgroundColor: "#a0bbe980" }}
-                />
-              </ContentButton>
+                    <ContentButton>
+                      <Button
+                        title="Enviar"
+                        onPress={handleSubmit(
+                          type === "ADD"
+                            ? handleSubmitCategory
+                            : handleEditCategory
+                        )}
+                        loading={loading}
+                        enabled={!loading}
+                      />
+                    </ContentButton>
+                  </Form>
+                </ScrollView>
+              </Fields>
             </Form>
           </ScrollView>
         </Container>
@@ -106,4 +122,4 @@ const TelaCrudFormCategoria = () => {
   );
 };
 
-export default TelaCrudFormCategoria;
+export default TelaCrudEditarCategoria;
