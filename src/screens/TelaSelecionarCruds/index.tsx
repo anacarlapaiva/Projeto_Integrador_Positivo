@@ -14,9 +14,7 @@ import ModalContent from "../../components/Modal";
 import TelaCrudEditarVendedor from "../TelaCrudEditarVendedor";
 import TelaCrudFormCorretor from "../TelaCrudFormCorretor";
 import TelaCrudFormimovel from "../TelaCrudFormImovel";
-import TelaCrudFormImovel from "../TelaCrudFormImovel";
 import {
-  ButtonOptions,
   Container,
   ContainerFunctions,
   ContentAdd,
@@ -47,12 +45,6 @@ const TelaSelecionarCruds = () => {
     { nome: "Pedro Henrique " },
     { nome: "Manoela Almeida" },
   ]);
-  const navigation = useNavigation();
-
-  const handleChangeStore = () => {
-    //@ts-ignore
-    navigation.navigate("TelaCrudEditarVendedor");
-  };
 
   return (
     <KeyboardAvoidingView

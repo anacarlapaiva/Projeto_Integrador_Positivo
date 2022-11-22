@@ -20,7 +20,6 @@ import {
 
 import FotoExemplo from "../../assets/example.png";
 import ModalContent from "../../components/Modal";
-import TelaCrudFormImovel from "../TelaCrudFormImovel";
 import {
   ContentList,
   ContentOptions,

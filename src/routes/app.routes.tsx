@@ -2,14 +2,12 @@ import React from "react";
 
 import { Platform } from "react-native";
 import { useTheme } from "styled-components";
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Home from "../screens/Home";
-import EditarVendedor from "../screens/TelaCrudEditarVendedor";
 import TelaSelecionarCruds from "../screens/TelaSelecionarCruds";
 import TelaImobiliaria from "../screens/TelaImobiliaria";
-import TelaUsuario from "../screens/Usuario";
 
 const BottomTab = createBottomTabNavigator();
 
@@ -60,18 +58,6 @@ export function AuthRoutes() {
           tabBarShowLabel: false,
         }}
       />
-
-      <BottomTab.Screen
-        name="TelaUsuario"
-        component={TelaUsuario}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome name="user" size={size} color={color} />
-          ),
-          tabBarShowLabel: false,
-        }}
-      />
-
     </BottomTab.Navigator>
   );
 }

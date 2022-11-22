@@ -1,4 +1,3 @@
-import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
@@ -16,7 +15,6 @@ import {
   ContentSubMenu,
   Fields,
   Form,
-  SeeAll,
   TitlePage,
 } from "./styles";
 

@@ -1,4 +1,3 @@
-import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
@@ -17,7 +16,6 @@ import {
   ContentSubMenu,
   Fields,
   Form,
-  SeeAll,
   TitlePage,
 } from "./styles";
 
@@ -31,14 +29,8 @@ const TelaCrudEditarVendedor = ({
   type,
 }: ITelaCrudEditarVendedorProps) => {
   const [loading, setLoading] = useState(false);
-  const navigation = useNavigation();
 
   const { control, handleSubmit } = useForm();
-
-  const handleBack = () => {
-    //@ts-ignore
-    navigation.navigate("LocationScreen");
-  };
 
   const handleSubmitSeller = async (form: Partial<ISellerData>) => {
     try {
