@@ -16,43 +16,56 @@ import {
   ContentSubMenu,
   Fields,
   Form,
+  SeeAll,
   TitlePage,
 } from "./styles";
 
-interface IEditarEndereco {
-  documento: string;
-  nome: string;
-  imoveis: any;
-  endereco: string;
-  telefone: string;
-  nascimento: any;
+interface ITelaCrudEditarenderecoProps {
+  type: "ADD" | "EDIT";
+  endereco?: IEnderecoData;
 }
 
-const TelaCrudFormEndereco = () => {
+const TelaCrudEditarEndereco = ({
+  endereco,
+  type,
+}: ITelaCrudEditarenderecoProps) => {
   const [loading, setLoading] = useState(false);
-  const navigation = useNavigation();
 
   const { control, handleSubmit } = useForm();
 
-  const handleBack = () => {
-    //@ts-ignore
-    navigation.navigate("LocationScreen");
-  };
-
-  const handleSubmitEndereco = async (form: Partial<IEditarEndereco>) => {
+  const handleSubmitEndereco = async (form: Partial<IEnderecoData>) => {
     try {
       setLoading(true);
       const payload = {
-        documento: form.documento,
-        nome: form.nome,
-        imoveis: form.imoveis,
-        endereco: form.endereco,
-        telefone: form.telefone,
-        nascimento: form.nascimento,
+        id: form.id,
+        cep: form.cep,
+        logradouro: form.logradouro,
+        bairro: form.bairro,
+        cidade: form.cidade,
+        uf: form.uf,
       };
       console.log(payload);
-    } catch {
+    } catch (err) {
+      console.log(err);
+    } finally {
       setLoading(false);
+    }
+  };
+
+  const handleEditEndereco = async (form: Partial<IEnderecoData>) => {
+    try {
+      setLoading(true);
+      const payload = {
+        id: form.id ? form.id : endereco?.id,
+        cep: form.cep ? form.cep : endereco?.cep,
+        logradouro: form.logradouro ? form.logradouro : endereco?.logradouro,
+        bairro: form.bairro ? form.bairro : endereco?.bairro,
+        cidade: form.cidade ? form.cidade : endereco?.cidade,
+        uf: form.uf ? form.uf : endereco?.uf,
+      };
+      console.log(payload);
+    } catch (err) {
+      console.log(err);
     } finally {
       setLoading(false);
     }
@@ -66,7 +79,7 @@ const TelaCrudFormEndereco = () => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
           <ContentSubMenu>
-          {type === "ADD" ? (
+            {type === "ADD" ? (
               <TitlePage>Adicionar endereço</TitlePage>
             ) : (
               <TitlePage>Editar endereço</TitlePage>
@@ -75,66 +88,68 @@ const TelaCrudFormEndereco = () => {
           <ScrollView>
             <Form>
               <Fields>
-                <InputForm
-                  placeholder="ID"
-                  name="id"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="CEP"
-                  name="cep"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Logradouro"
-                  name="logradouro"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Bairro"
-                  name="bairro"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Cidade"
-                  name="cidade"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="UF"
-                  name="uf"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Complemento"
-                  name="complemento"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-              </Fields>
+                <ScrollView>
+                  <Form>
+                    <Fields>
+                      <InputForm
+                        placeholder="ID"
+                        name="id"
+                        control={control}
+                        autoCorrect={false}
+                        keyboardType="default"
+                      />
+                      <InputForm
+                        placeholder="CEP"
+                        name="cep"
+                        control={control}
+                        autoCorrect={false}
+                        keyboardType="default"
+                      />
+                      <InputForm
+                        placeholder="Logradouro"
+                        name="logradouro"
+                        control={control}
+                        autoCorrect={false}
+                        keyboardType="default"
+                      />
+                      <InputForm
+                        placeholder="Bairro"
+                        name="bairro"
+                        control={control}
+                        autoCorrect={false}
+                        keyboardType="default"
+                      />
+                      <InputForm
+                        placeholder="Cidade"
+                        name="cidade"
+                        control={control}
+                        autoCorrect={false}
+                        keyboardType="default"
+                      />
+                      <InputForm
+                        placeholder="Estado"
+                        name="uf"
+                        control={control}
+                        autoCorrect={false}
+                        keyboardType="default"
+                      />
+                    </Fields>
 
-              <ContentButton>
-                <Button
-                  title="Enviar"
-                  onPress={handleSubmit(handleSubmitEndereco)}
-                  loading={loading}
-                  enabled={!loading}
-                  style={{ backgroundColor: "#a0bbe980" }}
-                />
-              </ContentButton>
+                    <ContentButton>
+                      <Button
+                        title="Enviar"
+                        onPress={handleSubmit(
+                          type === "ADD"
+                            ? handleSubmitEndereco
+                            : handleEditEndereco
+                        )}
+                        loading={loading}
+                        enabled={!loading}
+                      />
+                    </ContentButton>
+                  </Form>
+                </ScrollView>
+              </Fields>
             </Form>
           </ScrollView>
         </Container>
@@ -143,4 +158,4 @@ const TelaCrudFormEndereco = () => {
   );
 };
 
-export default TelaCrudFormEndereco;
+export default TelaCrudEditarEndereco;
