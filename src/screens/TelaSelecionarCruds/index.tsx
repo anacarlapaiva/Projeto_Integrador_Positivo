@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -11,6 +12,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import { ISellerData } from "../../@types/Seller";
 import Header from "../../components/Header";
 import ModalContent from "../../components/Modal";
+import api from "../../services/api";
 import TelaCrudEditarVendedor from "../TelaCrudEditarVendedor";
 import TelaCrudFormCategoria from "../TelaCrudFormCategoria";
 import TelaCrudEditarCategoria from "../TelaCrudFormCategoria";
@@ -62,6 +64,15 @@ const TelaSelecionarCruds = () => {
       status: true,
     },
   ]);
+
+  const onDelete = async (id: number) => {
+    try {
+      await api.delete(`/employee/${id}`);
+      Alert.alert("Removido com sucesso!");
+    } catch {
+      Alert.alert("Erro ao remover");
+    }
+  };
 
   return (
     <KeyboardAvoidingView
@@ -139,7 +150,12 @@ const TelaSelecionarCruds = () => {
                                 }
                                 title="Editar"
                               />
-                              <Right name="delete" size={24} color="red" />
+                              <Right
+                                name="delete"
+                                size={24}
+                                color="red"
+                                onPress={onDelete}
+                              />
                             </ContentSelect>
                           </ContentOptions>
                         </ContentList>
@@ -180,7 +196,12 @@ const TelaSelecionarCruds = () => {
                               }
                               title="Editar"
                             />
-                            <Right name="delete" size={24} color="red" />
+                            <Right
+                              name="delete"
+                              size={24}
+                              color="red"
+                              onPress={onDelete}
+                            />
                           </ContentSelect>
                         </ContentOptions>
                       </ContentList>
@@ -224,7 +245,12 @@ const TelaSelecionarCruds = () => {
                                 }
                                 title="Editar"
                               />
-                              <Right name="delete" size={24} color="red" />
+                              <Right
+                                name="delete"
+                                size={24}
+                                color="red"
+                                onPress={onDelete}
+                              />
                             </ContentSelect>
                           </ContentOptions>
                         </ContentList>
@@ -267,7 +293,12 @@ const TelaSelecionarCruds = () => {
                                 }
                                 title="Editar"
                               />
-                              <Right name="delete" size={24} color="red" />
+                              <Right
+                                name="delete"
+                                size={24}
+                                color="red"
+                                onPress={onDelete}
+                              />
                             </ContentSelect>
                           </ContentOptions>
                         </ContentList>
