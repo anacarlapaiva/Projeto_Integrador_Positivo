@@ -74,3 +74,17 @@ export const TextList = styled.Text`
   margin-top: ${RFValue(15)}px;
   font-size: ${RFValue(17)}px;
 `;
+
+export const ContentResponse = styled.View`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Status = styled.View`
+  padding: ${RFValue(25)}px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.colors.primary};
+  border-radius: ${RFValue(25)}px;
+`;

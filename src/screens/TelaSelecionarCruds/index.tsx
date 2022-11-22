@@ -25,11 +25,13 @@ import {
   ContentAdd,
   ContentList,
   ContentOptions,
+  ContentResponse,
   ContentSelect,
   ContentStore,
   ContentSubMenu,
   Right,
   SeeAll,
+  Status,
   TextList,
   TitlePage,
 } from "./styles";
@@ -230,11 +232,24 @@ const TelaSelecionarCruds = () => {
                     {imovel?.map((imovel, key) => {
                       return (
                         <ContentList key={key}>
-                          <ContentOptions>
-                            <TextList>{imovel.idImovel}</TextList>
-                            <TextList>{imovel.metrosQuadradosImovel}</TextList>
-                            <TextList>{imovel.metrosQuadradosTerreno}</TextList>
-                            <TextList>{imovel.status}</TextList>
+                          <ContentOptions
+                            style={{
+                              display: "flex",
+                              alignItems: "flex-end",
+                              borderBottomWidth: 2,
+                              borderBottomColor: "#cec6c6",
+                              paddingBottom: 30
+                            }}
+                          >
+                            <ContentResponse>
+                              <TextList>ID: {imovel.idImovel}</TextList>
+                              <TextList>
+                                M2: {imovel.metrosQuadradosImovel}
+                              </TextList>
+                              <TextList>
+                                Terreno: {imovel.metrosQuadradosTerreno}
+                              </TextList>
+                            </ContentResponse>
                             <ContentSelect>
                               <ModalContent
                                 children={
