@@ -1,4 +1,4 @@
 interface ICategoryData {
-    id?: string;
+    id?: number;
     descricao?: string;
 }

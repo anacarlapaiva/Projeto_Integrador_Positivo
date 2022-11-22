@@ -12,6 +12,7 @@ import { ISellerData } from "../../@types/Seller";
 import Header from "../../components/Header";
 import ModalContent from "../../components/Modal";
 import TelaCrudEditarVendedor from "../TelaCrudEditarVendedor";
+import TelaCrudEditarCategoria from "../TelaCrudFormCategoria";
 import TelaCrudFormCorretor from "../TelaCrudFormCorretor";
 import TelaCrudFormimovel from "../TelaCrudFormImovel";
 import {
@@ -44,6 +45,11 @@ const TelaSelecionarCruds = () => {
     { nome: "Lucas Abreu" },
     { nome: "Pedro Henrique " },
     { nome: "Manoela Almeida" },
+  ]);
+  const [categoria, setCategoria] = useState<ICategoryData[]>([
+    { id: 1, descricao: "dahsouihfiuahf" },
+    { id: 2, descricao: "dahsouihfiuahf" },
+    { id: 3, descricao: "dahsouihfiuahf" },
   ]);
 
   return (
@@ -197,7 +203,39 @@ const TelaSelecionarCruds = () => {
                   voltar
                 </SeeAll>
               </ContentSubMenu>
-              <Text>teste 5</Text>
+              <ContainerFunctions>
+                <ContentAdd>
+                  <ModalContent
+                    children={<TelaCrudEditarVendedor type="ADD" />}
+                    title="Adicionar usuário"
+                  />
+
+                  <ScrollView alwaysBounceVertical>
+                    {categoria?.map((categoria, key) => {
+                      return (
+                        <ContentList key={key}>
+                          <ContentOptions>
+                            <TextList>{categoria.id}</TextList>
+                            <TextList>{categoria.descricao}</TextList>
+                            <ContentSelect>
+                              <ModalContent
+                                children={
+                                  <TelaCrudEditarCategoria
+                                    categoria={categoria}
+                                    type="EDIT"
+                                  />
+                                }
+                                title="Editar"
+                              />
+                              <Right name="delete" size={24} color="red" />
+                            </ContentSelect>
+                          </ContentOptions>
+                        </ContentList>
+                      );
+                    })}
+                  </ScrollView>
+                </ContentAdd>
+              </ContainerFunctions>
             </ScrollView>
           )}
         </Container>
