@@ -4,7 +4,6 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  Text,
   TouchableWithoutFeedback,
 } from "react-native";
 import Header from "../../components/Header";
@@ -14,8 +13,13 @@ import {
   Container,
   ContentListImage,
   Description,
+  HR,
   SubDescription,
+  Title,
   ViewBox,
+  TextList,
+  ContentTop,
+  ContentButton,
 } from "./styles";
 
 import FotoExemplo from "../../assets/example.png";
@@ -25,7 +29,6 @@ import {
   ContentOptions,
   ContentSelect,
   Right,
-  TextList,
 } from "../TelaSelecionarCruds/styles";
 import TelaFormImobiliaria from "../TelaFormImobiliaria";
 
@@ -72,22 +75,34 @@ const TelaImobiliaria = () => {
               {imobiliaria?.map((imob, key) => {
                 return (
                   <ContentList key={key}>
-                    <ContentOptions>
-                      <TextList>ID: {imob.id}, </TextList>
-                      <TextList>cnpj: {imob.cnpj}, </TextList>
-                      <TextList>cep: {imob.cep}, </TextList>
-                      <TextList>logradouro: {imob.logradouro}, </TextList>
-                      <TextList>bairro: {imob.bairro}, </TextList>
-                      <TextList>cidade: {imob.cidade}, </TextList>
-                      <TextList>estado: {imob.uf}, </TextList>
-                      <TextList>creci: {imob.creciVendedor}</TextList>
-                      <ContentSelect>
-                        <ModalContent
-                          children={<TelaFormImobiliaria type="EDIT" />}
-                          title="cadastrar"
-                        />
-                        <Right name="delete" size={24} color="red" />
-                      </ContentSelect>
+                    <ContentOptions
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                      }}
+                    >
+                      <HR>
+                        <ContentTop>
+                          <Title>Informações: </Title>
+
+                          <ContentButton>
+                            <ModalContent
+                              children={<TelaFormImobiliaria type="EDIT" />}
+                              title="Editar"
+                            />
+                            <Right name="delete" size={24} color="red" />
+                          </ContentButton>
+                        </ContentTop>
+                        <TextList>ID: {imob.id}, </TextList>
+                        <TextList>cnpj: {imob.cnpj}, </TextList>
+                        <TextList>cep: {imob.cep}, </TextList>
+                        <TextList>logradouro: {imob.logradouro}, </TextList>
+                        <TextList>bairro: {imob.bairro}, </TextList>
+                        <TextList>cidade: {imob.cidade}, </TextList>
+                        <TextList>estado: {imob.uf}, </TextList>
+                        <TextList>creci: {imob.creciVendedor}</TextList>
+                      </HR>
                     </ContentOptions>
                   </ContentList>
                 );

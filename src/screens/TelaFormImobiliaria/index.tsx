@@ -109,6 +109,7 @@ const TelaFormImobiliaria = ({ imobiliaria, type }: ITelaImobiliaria) => {
                   control={control}
                   autoCorrect={false}
                   keyboardType="default"
+                  defaultValue={imobiliaria?.cep}
                 />
                 <InputForm
                   placeholder="Logradouro"
@@ -116,6 +117,7 @@ const TelaFormImobiliaria = ({ imobiliaria, type }: ITelaImobiliaria) => {
                   control={control}
                   autoCorrect={false}
                   keyboardType="default"
+                  defaultValue={imobiliaria?.logradouro}
                 />
                 <InputForm
                   placeholder="Bairro"
@@ -123,27 +125,31 @@ const TelaFormImobiliaria = ({ imobiliaria, type }: ITelaImobiliaria) => {
                   control={control}
                   autoCorrect={false}
                   keyboardType="default"
+                  defaultValue={imobiliaria?.bairro}
                 />
                 <InputForm
                   placeholder="Cidade"
                   name="cidade"
                   control={control}
                   autoCorrect={false}
-                  keyboardType="decimal-pad"
+                  keyboardType="default"
+                  defaultValue={imobiliaria?.cidade}
                 />
                 <InputForm
                   placeholder="Estado"
                   name="cidade"
                   control={control}
                   autoCorrect={false}
-                  keyboardType="decimal-pad"
+                  keyboardType="default"
+                  defaultValue={imobiliaria?.cidade}
                 />
                 <InputForm
                   placeholder="CRECI"
                   name="creci"
                   control={control}
                   autoCorrect={false}
-                  keyboardType="decimal-pad"
+                  keyboardType="default"
+                  defaultValue={imobiliaria?.creciVendedor}
                 />
               </Fields>
 

@@ -32,5 +32,33 @@ export const SubDescription = styled.Text`
   font-size: ${RFValue(14)}px;
   color: #595959;
   margin-top: ${RFValue(12)}px;
+`;
 
+export const HR = styled.View`
+  border-bottom-color: ${({ theme }) => theme.colors.border_location};
+  border-bottom-width: 2px;
+`;
+
+export const Title = styled.Text`
+  font-size: ${RFValue(22)}px;
+  color: ${({ theme }) => theme.colors.title};
+  margin-top: ${RFValue(15)}px;
+`;
+
+export const TextList = styled.Text`
+  margin-top: ${RFValue(5)}px;
+  font-size: ${RFValue(17)}px;
+  color: ${({ theme }) => theme.colors.description};
+`;
+
+export const ContentTop = styled.View`
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const ContentButton = styled.View`
+  margin-top: ${RFValue(15)}px;
+  flex-direction: row;
 `;
