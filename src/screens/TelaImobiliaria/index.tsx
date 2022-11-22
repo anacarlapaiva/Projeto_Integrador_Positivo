@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -31,6 +32,7 @@ import {
   Right,
 } from "../TelaSelecionarCruds/styles";
 import TelaFormImobiliaria from "../TelaFormImobiliaria";
+import api from "../../services/api";
 
 const TelaImobiliaria = () => {
   const [imobiliaria, setImobiliaria] = useState<IImobiliariaData[]>([
@@ -45,6 +47,16 @@ const TelaImobiliaria = () => {
       creciVendedor: "123",
     },
   ]);
+
+  const onDeleteImobiliaria = async (id: number) => {
+    try {
+      await api.delete(`/employee/${id}`);
+      Alert.alert("Imobiliaria removido com sucesso");
+    } catch {
+      Alert.alert("Erro ao remover imobiliaria");
+    }
+  };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -91,7 +103,7 @@ const TelaImobiliaria = () => {
                               children={<TelaFormImobiliaria type="EDIT" />}
                               title="Editar"
                             />
-                            <Right name="delete" size={24} color="red" />
+                            <Right name="delete" size={24} color="red" onPress={onDeleteImobiliaria}/>
                           </ContentButton>
                         </ContentTop>
                         <TextList>ID: {imob.id}, </TextList>
