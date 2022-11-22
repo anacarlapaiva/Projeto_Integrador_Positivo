@@ -26,7 +26,10 @@ interface ITelaCrudEditarVendedorProps {
   seller?: ISellerData;
 }
 
-const TelaCrudEditarVendedor = ({ seller, type }: ITelaCrudEditarVendedorProps) => {
+const TelaCrudEditarVendedor = ({
+  seller,
+  type,
+}: ITelaCrudEditarVendedorProps) => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
 
@@ -35,7 +38,7 @@ const TelaCrudEditarVendedor = ({ seller, type }: ITelaCrudEditarVendedorProps) 
   const handleBack = () => {
     //@ts-ignore
     navigation.navigate("LocationScreen");
-  }; 
+  };
 
   const handleSubmitSeller = async (form: Partial<ISellerData>) => {
     try {
@@ -49,7 +52,7 @@ const TelaCrudEditarVendedor = ({ seller, type }: ITelaCrudEditarVendedorProps) 
         nascimento: form.nascimento,
       };
       console.log(payload);
-    } catch(err) {
+    } catch (err) {
       console.log(err);
     } finally {
       setLoading(false);
@@ -68,12 +71,12 @@ const TelaCrudEditarVendedor = ({ seller, type }: ITelaCrudEditarVendedorProps) 
         nascimento: form.nascimento ? form.nascimento : seller?.nascimento,
       };
       console.log(payload);
-    } catch(err) {
-      console.log(err)
+    } catch (err) {
+      console.log(err);
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
     <KeyboardAvoidingView
@@ -83,7 +86,11 @@ const TelaCrudEditarVendedor = ({ seller, type }: ITelaCrudEditarVendedorProps) 
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
           <ContentSubMenu>
-            <TitlePage>Adicionar Vendedor</TitlePage>
+            {type === "ADD" ? (
+              <TitlePage>Adicionar Vendedor</TitlePage>
+            ) : (
+              <TitlePage>Editar Vendedor</TitlePage>
+            )}
           </ContentSubMenu>
           <ScrollView>
             <Form>
@@ -136,10 +143,11 @@ const TelaCrudEditarVendedor = ({ seller, type }: ITelaCrudEditarVendedorProps) 
               <ContentButton>
                 <Button
                   title="Enviar"
-                  onPress={handleSubmit(type === "ADD" ? handleSubmitSeller : handleEditSeller)}
+                  onPress={handleSubmit(
+                    type === "ADD" ? handleSubmitSeller : handleEditSeller
+                  )}
                   loading={loading}
                   enabled={!loading}
-                  style={{backgroundColor: '#a0bbe980'}}
                 />
               </ContentButton>
             </Form>

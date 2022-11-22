@@ -34,7 +34,6 @@ export const Form = styled.View`
 export const Fields = styled.View``;
 
 export const ContentButton = styled.View`
-    flex-direction: row;
     width: 100%;
 `;
 

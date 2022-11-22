@@ -29,7 +29,7 @@ const Button: React.FC<IProps> = ({
       {loading ? (
         <ActivityIndicator color={theme.colors.background} />
       ) : (
-        <StyledButton title={title} onPress={onPress} />
+        <ButtonNative {...rest} title={title} onPress={onPress} />
       )}
     </>
   );
