@@ -12,8 +12,10 @@ import { ISellerData } from "../../@types/Seller";
 import Header from "../../components/Header";
 import ModalContent from "../../components/Modal";
 import TelaCrudEditarVendedor from "../TelaCrudEditarVendedor";
+import TelaCrudFormCategoria from "../TelaCrudFormCategoria";
 import TelaCrudEditarCategoria from "../TelaCrudFormCategoria";
 import TelaCrudFormCorretor from "../TelaCrudFormCorretor";
+import TelaCrudFormImovel from "../TelaCrudFormImovel";
 import TelaCrudFormimovel from "../TelaCrudFormImovel";
 import {
   Container,
@@ -50,6 +52,15 @@ const TelaSelecionarCruds = () => {
     { id: 1, descricao: "dahsouihfiuahf" },
     { id: 2, descricao: "dahsouihfiuahf" },
     { id: 3, descricao: "dahsouihfiuahf" },
+  ]);
+  const [imovel, setImovel] = useState<IImovelData[]>([
+    {
+      idImovel: 1,
+      metrosQuadradosImovel: "123",
+      metrosQuadradosTerreno: "200",
+      valorImovel: "R$200.000",
+      status: true,
+    },
   ]);
 
   return (
@@ -187,12 +198,41 @@ const TelaSelecionarCruds = () => {
                   Voltar
                 </SeeAll>
               </ContentSubMenu>
-              <ContentAdd>
-                <ModalContent
-                  children={<TelaCrudFormimovel type="ADD" />}
-                  title="Adicionar Imóvel"
-                />
-              </ContentAdd>
+              <ContainerFunctions>
+                <ContentAdd>
+                  <ModalContent
+                    children={<TelaCrudFormImovel type="ADD" />}
+                    title="Adicionar imóvel"
+                  />
+
+                  <ScrollView alwaysBounceVertical>
+                    {imovel?.map((imovel, key) => {
+                      return (
+                        <ContentList key={key}>
+                          <ContentOptions>
+                            <TextList>{imovel.idImovel}</TextList>
+                            <TextList>{imovel.metrosQuadradosImovel}</TextList>
+                            <TextList>{imovel.metrosQuadradosTerreno}</TextList>
+                            <TextList>{imovel.status}</TextList>
+                            <ContentSelect>
+                              <ModalContent
+                                children={
+                                  <TelaCrudFormImovel
+                                    imovel={imovel}
+                                    type="EDIT"
+                                  />
+                                }
+                                title="Editar"
+                              />
+                              <Right name="delete" size={24} color="red" />
+                            </ContentSelect>
+                          </ContentOptions>
+                        </ContentList>
+                      );
+                    })}
+                  </ScrollView>
+                </ContentAdd>
+              </ContainerFunctions>
             </ScrollView>
           )}
           {step === 5 && (
@@ -206,8 +246,8 @@ const TelaSelecionarCruds = () => {
               <ContainerFunctions>
                 <ContentAdd>
                   <ModalContent
-                    children={<TelaCrudEditarVendedor type="ADD" />}
-                    title="Adicionar usuário"
+                    children={<TelaCrudFormCategoria type="ADD" />}
+                    title="Adicionar categoria"
                   />
 
                   <ScrollView alwaysBounceVertical>

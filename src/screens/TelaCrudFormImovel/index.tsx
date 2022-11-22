@@ -24,7 +24,7 @@ interface ITelaCrudEditarimovelProps {
   imovel?: IImovelData;
 }
 
-const TelaCrudFormimovel = ({ imovel, type }: ITelaCrudEditarimovelProps) => {
+const TelaCrudFormImovel = ({ imovel, type }: ITelaCrudEditarimovelProps) => {
   const [loading, setLoading] = useState(false);
 
   const { control, handleSubmit } = useForm();
@@ -151,4 +151,4 @@ const TelaCrudFormimovel = ({ imovel, type }: ITelaCrudEditarimovelProps) => {
   );
 };
 
-export default TelaCrudFormimovel;
+export default TelaCrudFormImovel;

@@ -1,5 +1,5 @@
 interface IImovelData {
-    idImovel?: string;
+    idImovel?: number;
     metrosQuadradosImovel?: string;
     metrosQuadradosTerreno?: string;
     valorImovel?: string;
