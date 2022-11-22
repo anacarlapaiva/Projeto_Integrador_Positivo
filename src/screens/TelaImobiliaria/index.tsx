@@ -8,7 +8,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import Header from "../../components/Header";
-import { ContentSubMenu, SeeAll, TextBottom, TitlePage } from "../Home/styles";
+import { ContentSubMenu, TitlePage } from "../Home/styles";
 import {
   Box,
   Container,
@@ -69,9 +69,9 @@ const TelaImobiliaria = () => {
             </SubDescription>
 
             <ScrollView>
-              {imobiliaria?.map((imob) => {
+              {imobiliaria?.map((imob, key) => {
                 return (
-                  <ContentList>
+                  <ContentList key={key}>
                     <ContentOptions>
                       <TextList>ID: {imob.id}, </TextList>
                       <TextList>cnpj: {imob.cnpj}, </TextList>

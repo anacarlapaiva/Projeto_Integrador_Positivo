@@ -148,9 +148,9 @@ const TelaSelecionarCruds = () => {
                 />
 
                 <ScrollView alwaysBounceVertical>
-                  {correctors?.map((corrector) => {
+                  {correctors?.map((corrector, key) => {
                     return (
-                      <ContentList>
+                      <ContentList key={key}>
                         <ContentOptions>
                           <TextList>{corrector.nome}</TextList>
                           <ContentSelect>
