@@ -65,6 +65,13 @@ const TelaSelecionarCruds = () => {
       valorImovel: "R$200.000",
       status: true,
     },
+    {
+      idImovel: 2,
+      metrosQuadradosImovel: "1555",
+      metrosQuadradosTerreno: "2000",
+      valorImovel: "R$1.000.000.000",
+      status: true,
+    },
   ]);
 
   const onDelete = async (id: number) => {
