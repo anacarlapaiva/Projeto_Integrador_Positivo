@@ -42,6 +42,7 @@ const TelaFormImobiliaria = ({ imobiliaria, type }: ITelaImobiliaria) => {
         creciVendedor: form.creciVendedor,
       };
       console.log(payload);
+      console.log("adicionou");
     } catch (err) {
       console.log(err);
     } finally {
@@ -64,6 +65,7 @@ const TelaFormImobiliaria = ({ imobiliaria, type }: ITelaImobiliaria) => {
           : imobiliaria?.creciVendedor,
       };
       console.log(payload);
+      console.log("editou");
     } catch (err) {
       console.log(err);
     } finally {
