@@ -20,7 +20,6 @@ const ModalContent: React.FC<IModalProps> = ({ children, title }) => {
               title="Fechar modal"
               onPress={() => {
                 setVisible(false);
-                console.log("aaaaaaaa");
               }}
             />
             {children}
@@ -31,7 +30,6 @@ const ModalContent: React.FC<IModalProps> = ({ children, title }) => {
         title={title}
         onPress={() => {
           setVisible(true);
-          console.log("aaaaaaaa");
         }}
       />
     </Content>
