@@ -46,7 +46,6 @@ const Home: React.FC = () => {
           </ContentSearch>
           <ContentSubMenu>
             <TitlePage>Escolha sua opção</TitlePage>
-            <SeeAll>Ver todos</SeeAll>
           </ContentSubMenu>
           <ScrollView>
             <ContentListImage>
