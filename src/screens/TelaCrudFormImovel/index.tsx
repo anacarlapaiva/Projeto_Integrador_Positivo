@@ -16,43 +16,55 @@ import {
   ContentSubMenu,
   Fields,
   Form,
+  SeeAll,
   TitlePage,
 } from "./styles";
 
-interface IEditarImovel {
-  documento: string;
-  nome: string;
-  imoveis: any;
-  endereco: string;
-  telefone: string;
-  nascimento: any;
+interface ITelaCrudEditarimovelProps {
+  type: "ADD" | "EDIT";
+  imovel?: IImovelData;
 }
 
-const TelaCrudFormImovel = () => {
+const TelaCrudFormimovel = ({ imovel, type }: ITelaCrudEditarimovelProps) => {
   const [loading, setLoading] = useState(false);
-  const navigation = useNavigation();
 
   const { control, handleSubmit } = useForm();
 
-  const handleBack = () => {
-    //@ts-ignore
-    navigation.navigate("LocationScreen");
-  };
-
-  const handleSubmitCorretor = async (form: Partial<IEditarImovel>) => {
+  const handleSubmitimovel = async (form: Partial<IImovelData>) => {
     try {
       setLoading(true);
       const payload = {
-        documento: form.documento,
-        nome: form.nome,
-        imoveis: form.imoveis,
-        endereco: form.endereco,
-        telefone: form.telefone,
-        nascimento: form.nascimento,
+        idImovel: form.idImovel,
+        metrosQuadradosImovel: form.metrosQuadradosImovel,
+        metrosQuadradosTerreno: form.metrosQuadradosTerreno,
+        valorImovel: form.valorImovel,
+        status: form.status,
       };
       console.log(payload);
-    } catch {
+    } catch (err) {
+      console.log(err);
+    } finally {
       setLoading(false);
+    }
+  };
+
+  const handleEditimovel = async (form: Partial<IImovelData>) => {
+    try {
+      setLoading(true);
+      const payload = {
+        idImovel: form.idImovel ? form.idImovel : imovel?.idImovel,
+        metrosQuadradosImovel: form.metrosQuadradosImovel
+          ? form.metrosQuadradosImovel
+          : imovel?.metrosQuadradosImovel,
+        metrosQuadradosTerreno: form.metrosQuadradosTerreno
+          ? form.metrosQuadradosTerreno
+          : imovel?.metrosQuadradosTerreno,
+        valorImovel: form.valorImovel ? form.valorImovel : imovel?.valorImovel,
+        status: form.status ? form.status : imovel?.status,
+      };
+      console.log(payload);
+    } catch (err) {
+      console.log(err);
     } finally {
       setLoading(false);
     }
@@ -66,7 +78,7 @@ const TelaCrudFormImovel = () => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
           <ContentSubMenu>
-          {type === "ADD" ? (
+            {type === "ADD" ? (
               <TitlePage>Adicionar imóvel</TitlePage>
             ) : (
               <TitlePage>Editar imóvel</TitlePage>
@@ -75,66 +87,59 @@ const TelaCrudFormImovel = () => {
           <ScrollView>
             <Form>
               <Fields>
-                <InputForm
-                  placeholder="ID"
-                  name="id"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Metros quadrados do imóvel"
-                  name="metros"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Metros quadrados do terreno"
-                  name="metrosterreno"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Valor do imóvel"
-                  name="valor"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Status"
-                  name="status"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
-                <InputForm
-                  placeholder="Endereço"
-                  name="endereco"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="decimal-pad"
-                />
-                <InputForm
-                  placeholder="Vendedor"
-                  name="vendedor"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="decimal-pad"
-                />
-              </Fields>
+                <ScrollView>
+                  <Form>
+                    <Fields>
+                      <InputForm
+                        placeholder="ID Imóvel"
+                        name="idImovel"
+                        control={control}
+                        autoCorrect={false}
+                        keyboardType="default"
+                      />
+                      <InputForm
+                        placeholder="Metros quadrados"
+                        name="metrosQuadradosImovel"
+                        control={control}
+                        autoCorrect={false}
+                        keyboardType="default"
+                      />
+                      <InputForm
+                        placeholder="Metros quadrados do terreno"
+                        name="metrosQuadradosTerreno"
+                        control={control}
+                        autoCorrect={false}
+                        keyboardType="default"
+                      />
+                      <InputForm
+                        placeholder="Valor do imóvel"
+                        name="valorImovel"
+                        control={control}
+                        autoCorrect={false}
+                        keyboardType="default"
+                      />
+                      <InputForm
+                        placeholder="Status"
+                        name="status"
+                        control={control}
+                        autoCorrect={false}
+                        keyboardType="default"
+                      />
+                    </Fields>
 
-              <ContentButton>
-                <Button
-                  title="Enviar"
-                  onPress={handleSubmit(handleSubmitCorretor)}
-                  loading={loading}
-                  enabled={!loading}
-                  style={{ backgroundColor: "#a0bbe980" }}
-                />
-              </ContentButton>
+                    <ContentButton>
+                      <Button
+                        title="Enviar"
+                        onPress={handleSubmit(
+                          type === "ADD" ? handleSubmitimovel : handleEditimovel
+                        )}
+                        loading={loading}
+                        enabled={!loading}
+                      />
+                    </ContentButton>
+                  </Form>
+                </ScrollView>
+              </Fields>
             </Form>
           </ScrollView>
         </Container>
@@ -143,4 +148,4 @@ const TelaCrudFormImovel = () => {
   );
 };
 
-export default TelaCrudFormImovel;
+export default TelaCrudFormimovel;

@@ -13,6 +13,7 @@ import Header from "../../components/Header";
 import ModalContent from "../../components/Modal";
 import TelaCrudEditarVendedor from "../TelaCrudEditarVendedor";
 import TelaCrudFormCorretor from "../TelaCrudFormCorretor";
+import TelaCrudFormimovel from "../TelaCrudFormImovel";
 import TelaCrudFormImovel from "../TelaCrudFormImovel";
 import {
   ButtonOptions,
@@ -190,7 +191,7 @@ const TelaSelecionarCruds = () => {
               </ContentSubMenu>
               <ContentAdd>
                 <ModalContent
-                  children={<TelaCrudFormImovel />}
+                  children={<TelaCrudFormimovel type="ADD" />}
                   title="Adicionar Imóvel"
                 />
               </ContentAdd>

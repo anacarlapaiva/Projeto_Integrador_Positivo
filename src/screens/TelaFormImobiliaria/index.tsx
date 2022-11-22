@@ -1,4 +1,3 @@
-import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
@@ -16,7 +15,6 @@ import {
   ContentSubMenu,
   Fields,
   Form,
-  SeeAll,
   TitlePage,
 } from "./styles";
 
@@ -25,10 +23,7 @@ interface ITelaImobiliaria {
   imobiliaria?: IImobiliariaData;
 }
 
-const TelaFormImobiliaria = ({
-  imobiliaria,
-  type,
-}: ITelaImobiliaria) => {
+const TelaFormImobiliaria = ({ imobiliaria, type }: ITelaImobiliaria) => {
   const [loading, setLoading] = useState(false);
 
   const { control, handleSubmit } = useForm();
@@ -64,7 +59,9 @@ const TelaFormImobiliaria = ({
         bairro: form.bairro ? form.bairro : imobiliaria?.bairro,
         cidade: form.cidade ? form.cidade : imobiliaria?.cidade,
         uf: form.uf ? form.uf : imobiliaria?.uf,
-        creciVendedor: form.creciVendedor ? form.creciVendedor : imobiliaria?.creciVendedor,
+        creciVendedor: form.creciVendedor
+          ? form.creciVendedor
+          : imobiliaria?.creciVendedor,
       };
       console.log(payload);
     } catch (err) {
@@ -82,7 +79,7 @@ const TelaFormImobiliaria = ({
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container>
           <ContentSubMenu>
-          {type === "ADD" ? (
+            {type === "ADD" ? (
               <TitlePage>Adicionar imobiliária</TitlePage>
             ) : (
               <TitlePage>Editar imobiliária</TitlePage>
@@ -154,7 +151,9 @@ const TelaFormImobiliaria = ({
                 <Button
                   title="Enviar"
                   onPress={handleSubmit(
-                    type === "ADD" ? handleSubmitImobiliaria : handleEditImobiliaria
+                    type === "ADD"
+                      ? handleSubmitImobiliaria
+                      : handleEditImobiliaria
                   )}
                   loading={loading}
                   enabled={!loading}
