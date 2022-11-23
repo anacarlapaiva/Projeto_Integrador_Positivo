@@ -13,9 +13,7 @@ import {
   Box,
   Container,
   ContentListImage,
-  Description,
   HR,
-  SubDescription,
   Title,
   ViewBox,
   TextList,
@@ -28,11 +26,9 @@ import ModalContent from "../../components/Modal";
 import {
   ContentList,
   ContentOptions,
-  ContentSelect,
   Right,
 } from "../TelaSelecionarCruds/styles";
 import TelaFormImobiliaria from "../TelaFormImobiliaria";
-import api from "../../services/api";
 import axios from "axios";
 
 const TelaImobiliaria = () => {
@@ -40,7 +36,7 @@ const TelaImobiliaria = () => {
 
   const onDeleteImobiliaria = async (id: number) => {
     try {
-      await api.delete(`/employee/${id}`);
+      await axios.delete(`http://localhost:5000/Imobiliaria/${id}`);
       Alert.alert("Imobiliaria removido com sucesso");
     } catch {
       Alert.alert("Erro ao remover imobiliaria");
@@ -48,9 +44,17 @@ const TelaImobiliaria = () => {
   };
 
   const onChangeImobiliaria = async () => {
-    const { data } = await axios.get("http://localhost:5000/Imobiliaria");
-    console.log(data);
-    setImobiliaria(data);
+    try {
+      const { data } = await axios.get("http://localhost:5000/Imobiliaria");
+      if (data) {
+        setImobiliaria(data);
+      } else {
+        Alert.alert("Não há lojas adicionadas");
+      }
+      console.log(data);
+    } catch (err: any) {
+      console.log("ERRO:" + err);
+    }
   };
 
   useEffect(() => {

@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
@@ -39,6 +40,7 @@ const TelaFormImobiliaria = ({
     try {
       setLoading(true);
       const payload = {
+        id: 1,
         cnpj: form.cnpj,
         cep: form.cep,
         logradouro: form.logradouro,
@@ -47,8 +49,8 @@ const TelaFormImobiliaria = ({
         uf: form.uf,
         creciVendedor: form.creciVendedor,
       };
-      await api.post("/Imobiliaria", payload);
-      console.log(payload)
+      await axios.post("http://localhost:5000/Imobiliaria", payload);
+      console.log(payload);
       onChangeImobiliaria();
       Alert.alert("Adicionado com sucesso");
     } catch (err) {
@@ -148,7 +150,7 @@ const TelaFormImobiliaria = ({
                 />
                 <InputForm
                   placeholder="CRECI"
-                  name="creci"
+                  name="creciVendedor"
                   control={control}
                   autoCorrect={false}
                   keyboardType="default"

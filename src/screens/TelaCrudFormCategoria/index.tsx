@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
@@ -10,7 +11,6 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 import Button from "../../components/Button";
 import InputForm from "../../components/InputForm";
-import api from "../../services/api";
 import {
   Container,
   ContentButton,
@@ -29,7 +29,7 @@ interface ITelaCrudEditarCategoriaProps {
 const TelaCrudEditarCategoria = ({
   categoria,
   type,
-  onChangeCategoria
+  onChangeCategoria,
 }: ITelaCrudEditarCategoriaProps) => {
   const [loading, setLoading] = useState(false);
 
@@ -42,7 +42,7 @@ const TelaCrudEditarCategoria = ({
         id: form.id,
         descricao: form.descricao,
       };
-      await api.post("/Categoria", payload);
+      await axios.post("http://localhost:5000/Categoria", payload);
       onChangeCategoria();
       Alert.alert("Adicionado com sucesso");
     } catch (err) {
@@ -50,6 +50,7 @@ const TelaCrudEditarCategoria = ({
       Alert.alert("Erro ao adicionar");
     } finally {
       setLoading(false);
+      console.log("teste");
     }
   };
 
@@ -60,7 +61,10 @@ const TelaCrudEditarCategoria = ({
         id: form.id ? form.id : categoria?.id,
         descricao: form.descricao ? form.descricao : categoria?.descricao,
       };
-      await api.put("/Categoria", payload);
+      await axios.put(
+        `http://localhost:5000/Categoria/${categoria?.id}`,
+        payload
+      );
       onChangeCategoria();
       Alert.alert("Editado com sucesso");
     } catch (err) {

@@ -1,4 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import {
   Alert,
@@ -30,7 +31,6 @@ import {
   ContentSubMenu,
   Right,
   SeeAll,
-  Status,
   TextList,
   TitlePage,
 } from "./styles";
@@ -38,14 +38,13 @@ import {
 const TelaSelecionarCruds = () => {
   const [step, setStep] = useState(1);
   const [sellers, setSellers] = useState<ISellerData[]>([]);
-
   const [correctors, setCorrectors] = useState<ICorrectorData[]>([]);
   const [categoria, setCategoria] = useState<ICategoryData[]>([]);
   const [imovel, setImovel] = useState<IImovelData[]>([]);
 
   const onDelete = async (id: number) => {
     try {
-      await api.delete(`/employee/${id}`);
+      await api.delete(`http://localhosto:5000/${id}`);
       Alert.alert("Removido com sucesso!");
     } catch {
       Alert.alert("Erro ao remover");
@@ -53,21 +52,37 @@ const TelaSelecionarCruds = () => {
   };
 
   const onChangeVendedor = async () => {
-    const { data } = await api.get("/Vendedor");
-    setSellers(data);
+    try {
+      const { data } = await axios.get("http://localhosto:5000/Vendedor");
+      setSellers(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const onChangeCorretor = async () => {
-    const { data } = await api.get("/Corretor");
-    setCorrectors(data);
+    try {
+      const { data } = await axios.get("http://localhosto:5000/Corretor");
+      setCorrectors(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
   const onChangeCategoria = async () => {
-    const { data } = await api.get("/Categoria");
-    setCategoria(data);
+    try {
+      const { data } = await axios.get("http://localhosto:5000/Categoria");
+      setCategoria(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
   const onChangeImovel = async () => {
-    const { data } = await api.get("/Imovel");
-    setImovel(data);
+    try {
+      const { data } = await axios.get("http://localhosto:5000/Imovel");
+      setImovel(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
