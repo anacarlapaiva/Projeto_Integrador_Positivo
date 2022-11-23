@@ -92,13 +92,6 @@ const TelaCrudEditarCategoria = ({
                   <Form>
                     <Fields>
                       <InputForm
-                        placeholder="ID"
-                        name="id"
-                        control={control}
-                        autoCorrect={false}
-                        keyboardType="default"
-                      />
-                      <InputForm
                         placeholder="Descrição"
                         name="descricao"
                         control={control}

@@ -26,7 +26,11 @@ interface ITelaImobiliaria {
   onChangeImobiliaria: () => void;
 }
 
-const TelaFormImobiliaria = ({ imobiliaria, type, onChangeImobiliaria }: ITelaImobiliaria) => {
+const TelaFormImobiliaria = ({
+  imobiliaria,
+  type,
+  onChangeImobiliaria,
+}: ITelaImobiliaria) => {
   const [loading, setLoading] = useState(false);
 
   const { control, handleSubmit } = useForm();
@@ -45,7 +49,7 @@ const TelaFormImobiliaria = ({ imobiliaria, type, onChangeImobiliaria }: ITelaIm
         creciVendedor: form.creciVendedor,
       };
       await api.post("/Imobiliaria", payload);
-      onChangeImobiliaria()
+      onChangeImobiliaria();
       Alert.alert("Adicionado com sucesso");
     } catch (err) {
       console.log(err);
@@ -65,12 +69,10 @@ const TelaFormImobiliaria = ({ imobiliaria, type, onChangeImobiliaria }: ITelaIm
         bairro: form.bairro ? form.bairro : imobiliaria?.bairro,
         cidade: form.cidade ? form.cidade : imobiliaria?.cidade,
         uf: form.uf ? form.uf : imobiliaria?.uf,
-        creciVendedor: form.creciVendedor
-          ? form.creciVendedor
-          : imobiliaria?.creciVendedor,
+        creciVendedor: form.creciVendedor,
       };
       await api.put(`/Imobiliaria/${imobiliaria?.id}`, payload);
-      onChangeImobiliaria()
+      onChangeImobiliaria();
       Alert.alert("Editado com sucesso");
     } catch (err) {
       console.log(err);
@@ -97,13 +99,6 @@ const TelaFormImobiliaria = ({ imobiliaria, type, onChangeImobiliaria }: ITelaIm
           <ScrollView>
             <Form>
               <Fields>
-                <InputForm
-                  placeholder="ID"
-                  name="id"
-                  control={control}
-                  autoCorrect={false}
-                  keyboardType="default"
-                />
                 <InputForm
                   placeholder="CNPJ"
                   name="cnpj"
@@ -146,11 +141,11 @@ const TelaFormImobiliaria = ({ imobiliaria, type, onChangeImobiliaria }: ITelaIm
                 />
                 <InputForm
                   placeholder="Estado"
-                  name="cidade"
+                  name="uf"
                   control={control}
                   autoCorrect={false}
                   keyboardType="default"
-                  defaultValue={imobiliaria?.cidade}
+                  defaultValue={imobiliaria?.uf}
                 />
                 <InputForm
                   placeholder="CRECI"

@@ -102,13 +102,6 @@ const TelaCrudFormImovel = ({
                   <Form>
                     <Fields>
                       <InputForm
-                        placeholder="ID Imóvel"
-                        name="idImovel"
-                        control={control}
-                        autoCorrect={false}
-                        keyboardType="default"
-                      />
-                      <InputForm
                         placeholder="Metros quadrados"
                         name="metrosQuadradosImovel"
                         control={control}

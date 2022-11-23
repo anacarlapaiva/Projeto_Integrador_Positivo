@@ -95,13 +95,6 @@ const TelaCrudEditarEndereco = ({
                   <Form>
                     <Fields>
                       <InputForm
-                        placeholder="ID"
-                        name="id"
-                        control={control}
-                        autoCorrect={false}
-                        keyboardType="default"
-                      />
-                      <InputForm
                         placeholder="CEP"
                         name="cep"
                         control={control}
