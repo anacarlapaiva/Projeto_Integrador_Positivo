@@ -39,7 +39,6 @@ const TelaFormImobiliaria = ({
     try {
       setLoading(true);
       const payload = {
-        id: form.id,
         cnpj: form.cnpj,
         cep: form.cep,
         logradouro: form.logradouro,
@@ -49,6 +48,7 @@ const TelaFormImobiliaria = ({
         creciVendedor: form.creciVendedor,
       };
       await api.post("/Imobiliaria", payload);
+      console.log(payload)
       onChangeImobiliaria();
       Alert.alert("Adicionado com sucesso");
     } catch (err) {
@@ -63,7 +63,6 @@ const TelaFormImobiliaria = ({
     try {
       setLoading(true);
       const payload = {
-        id: form.id ? form.id : imobiliaria?.id,
         cnpj: form.cnpj ? form.cnpj : imobiliaria?.cnpj,
         logradouro: form.logradouro ? form.logradouro : imobiliaria?.logradouro,
         bairro: form.bairro ? form.bairro : imobiliaria?.bairro,

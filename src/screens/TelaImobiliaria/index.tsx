@@ -47,7 +47,9 @@ const TelaImobiliaria = () => {
   };
 
   const onChangeImobiliaria = async () => {
+    fetch("http://localhost:5000/Imobiliaria").then((response) => console.log(response));
     const { data } = await api.get("/Imobiliaria");
+    console.log(data);
     setImobiliaria(data);
   }
 
