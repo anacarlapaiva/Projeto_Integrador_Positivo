@@ -40,27 +40,8 @@ const TelaSelecionarCruds = () => {
   const [sellers, setSellers] = useState<ISellerData[]>([]);
 
   const [correctors, setCorrectors] = useState<ICorrectorData[]>([]);
-  const [categoria, setCategoria] = useState<ICategoryData[]>([
-    { id: 1, descricao: "dahsouihfiuahf" },
-    { id: 2, descricao: "dahsouihfiuahf" },
-    { id: 3, descricao: "dahsouihfiuahf" },
-  ]);
-  const [imovel, setImovel] = useState<IImovelData[]>([
-    {
-      idImovel: 1,
-      metrosQuadradosImovel: "123",
-      metrosQuadradosTerreno: "200",
-      valorImovel: "R$200.000",
-      status: true,
-    },
-    {
-      idImovel: 2,
-      metrosQuadradosImovel: "1555",
-      metrosQuadradosTerreno: "2000",
-      valorImovel: "R$1.000.000.000",
-      status: true,
-    },
-  ]);
+  const [categoria, setCategoria] = useState<ICategoryData[]>([]);
+  const [imovel, setImovel] = useState<IImovelData[]>([]);
 
   const onDelete = async (id: number) => {
     try {
