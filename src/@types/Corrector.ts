@@ -1,4 +1,5 @@
 interface ICorrectorData {
+    id: number,
     documento?: string;
     nome: string;
     creci?: string;

@@ -1,4 +1,5 @@
 interface ISellerData {
+    id: number;
     documento?: string;
     nome: string;
     imoveis?: any;

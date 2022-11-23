@@ -10,6 +10,7 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 import Button from "../../components/Button";
 import InputForm from "../../components/InputForm";
+import api from "../../services/api";
 import {
   Container,
   ContentButton,
@@ -22,11 +23,13 @@ import {
 interface ITelaCrudEditarCategoriaProps {
   type: "ADD" | "EDIT";
   categoria?: ICategoryData;
+  onChangeCategoria: () => void;
 }
 
 const TelaCrudEditarCategoria = ({
   categoria,
   type,
+  onChangeCategoria
 }: ITelaCrudEditarCategoriaProps) => {
   const [loading, setLoading] = useState(false);
 
@@ -39,7 +42,8 @@ const TelaCrudEditarCategoria = ({
         id: form.id,
         descricao: form.descricao,
       };
-      console.log(payload);
+      await api.post("/Categoria", payload);
+      onChangeCategoria();
       Alert.alert("Adicionado com sucesso");
     } catch (err) {
       console.log(err);
@@ -56,7 +60,8 @@ const TelaCrudEditarCategoria = ({
         id: form.id ? form.id : categoria?.id,
         descricao: form.descricao ? form.descricao : categoria?.descricao,
       };
-      console.log(payload);
+      await api.put("/Categoria", payload);
+      onChangeCategoria();
       Alert.alert("Editado com sucesso");
     } catch (err) {
       console.log(err);

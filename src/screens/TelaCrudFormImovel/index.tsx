@@ -10,6 +10,7 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 import Button from "../../components/Button";
 import InputForm from "../../components/InputForm";
+import api from "../../services/api";
 import {
   Container,
   ContentButton,
@@ -22,9 +23,14 @@ import {
 interface ITelaCrudEditarimovelProps {
   type: "ADD" | "EDIT";
   imovel?: IImovelData;
+  onChangeImovel: () => void;
 }
 
-const TelaCrudFormImovel = ({ imovel, type }: ITelaCrudEditarimovelProps) => {
+const TelaCrudFormImovel = ({
+  imovel,
+  type,
+  onChangeImovel,
+}: ITelaCrudEditarimovelProps) => {
   const [loading, setLoading] = useState(false);
 
   const { control, handleSubmit } = useForm();
@@ -39,7 +45,8 @@ const TelaCrudFormImovel = ({ imovel, type }: ITelaCrudEditarimovelProps) => {
         valorImovel: form.valorImovel,
         status: form.status,
       };
-      console.log(payload);
+      await api.post("/Imovel", payload);
+      onChangeImovel();
       Alert.alert("Adicionado com sucesso");
     } catch (err) {
       console.log(err);
@@ -63,7 +70,8 @@ const TelaCrudFormImovel = ({ imovel, type }: ITelaCrudEditarimovelProps) => {
         valorImovel: form.valorImovel ? form.valorImovel : imovel?.valorImovel,
         status: form.status ? form.status : imovel?.status,
       };
-      console.log(payload);
+      await api.put("/Imovel", payload);
+      onChangeImovel();
       Alert.alert("Editado com sucesso");
     } catch (err) {
       console.log(err);

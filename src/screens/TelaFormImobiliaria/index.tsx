@@ -10,6 +10,7 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 import Button from "../../components/Button";
 import InputForm from "../../components/InputForm";
+import api from "../../services/api";
 import {
   Container,
   ContentButton,
@@ -22,9 +23,10 @@ import {
 interface ITelaImobiliaria {
   type: "ADD" | "EDIT";
   imobiliaria?: IImobiliariaData;
+  onChangeImobiliaria: () => void;
 }
 
-const TelaFormImobiliaria = ({ imobiliaria, type }: ITelaImobiliaria) => {
+const TelaFormImobiliaria = ({ imobiliaria, type, onChangeImobiliaria }: ITelaImobiliaria) => {
   const [loading, setLoading] = useState(false);
 
   const { control, handleSubmit } = useForm();
@@ -42,8 +44,8 @@ const TelaFormImobiliaria = ({ imobiliaria, type }: ITelaImobiliaria) => {
         uf: form.uf,
         creciVendedor: form.creciVendedor,
       };
-      console.log(payload);
-      console.log("adicionou");
+      await api.post("/Imobiliaria", payload);
+      onChangeImobiliaria()
       Alert.alert("Adicionado com sucesso");
     } catch (err) {
       console.log(err);
@@ -67,8 +69,8 @@ const TelaFormImobiliaria = ({ imobiliaria, type }: ITelaImobiliaria) => {
           ? form.creciVendedor
           : imobiliaria?.creciVendedor,
       };
-      console.log(payload);
-      console.log("editou");
+      await api.put(`/Imobiliaria/${imobiliaria?.id}`, payload);
+      onChangeImobiliaria()
       Alert.alert("Editado com sucesso");
     } catch (err) {
       console.log(err);

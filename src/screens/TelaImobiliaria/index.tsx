@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Alert,
   Keyboard,
@@ -35,28 +35,7 @@ import TelaFormImobiliaria from "../TelaFormImobiliaria";
 import api from "../../services/api";
 
 const TelaImobiliaria = () => {
-  const [imobiliaria, setImobiliaria] = useState<IImobiliariaData[]>([
-    {
-      id: 2,
-      cnpj: "0123456789",
-      cep: "0505050",
-      logradouro: "rua tal 1",
-      bairro: "Mamiorgfsd",
-      cidade: "londrina",
-      uf: "pr",
-      creciVendedor: "123",
-    },
-    {
-      id: 3,
-      cnpj: "0123456789",
-      cep: "0505050",
-      logradouro: "rua tal 1",
-      bairro: "Mamiorgfsd",
-      cidade: "londrina",
-      uf: "pr",
-      creciVendedor: "55555",
-    },
-  ]);
+  const [imobiliaria, setImobiliaria] = useState<IImobiliariaData[]>([]);
 
   const onDeleteImobiliaria = async (id: number) => {
     try {
@@ -66,6 +45,15 @@ const TelaImobiliaria = () => {
       Alert.alert("Erro ao remover imobiliaria");
     }
   };
+
+  const onChangeImobiliaria = async () => {
+    const { data } = await api.get("/Imobiliaria");
+    setImobiliaria(data);
+  }
+
+  useEffect(() => {
+    onChangeImobiliaria()
+  }, []);
 
   return (
     <KeyboardAvoidingView
@@ -78,7 +66,7 @@ const TelaImobiliaria = () => {
           <ContentSubMenu>
             <TitlePage>Imobiliária</TitlePage>
             <ModalContent
-              children={<TelaFormImobiliaria type="ADD" />}
+              children={<TelaFormImobiliaria onChangeImobiliaria={onChangeImobiliaria} type="ADD" />}
               title="cadastrar"
             />
           </ContentSubMenu>
@@ -105,7 +93,7 @@ const TelaImobiliaria = () => {
 
                           <ContentButton>
                             <ModalContent
-                              children={<TelaFormImobiliaria type="EDIT" />}
+                              children={<TelaFormImobiliaria type="EDIT" onChangeImobiliaria={onChangeImobiliaria} />}
                               title="Editar"
                             />
                             <Right name="delete" size={24} color="red" onPress={onDeleteImobiliaria}/>

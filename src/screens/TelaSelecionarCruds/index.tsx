@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Alert,
   Keyboard,
@@ -18,7 +18,6 @@ import TelaCrudFormCategoria from "../TelaCrudFormCategoria";
 import TelaCrudEditarCategoria from "../TelaCrudFormCategoria";
 import TelaCrudFormCorretor from "../TelaCrudFormCorretor";
 import TelaCrudFormImovel from "../TelaCrudFormImovel";
-import TelaCrudFormimovel from "../TelaCrudFormImovel";
 import {
   Container,
   ContainerFunctions,
@@ -38,20 +37,9 @@ import {
 
 const TelaSelecionarCruds = () => {
   const [step, setStep] = useState(1);
-  const [sellers, setSellers] = useState<ISellerData[]>([
-    { nome: "João Bobão" },
-    { nome: "Camila Pereira " },
-    { nome: "Lucas Abreu" },
-    { nome: "Pedro Henrique " },
-    { nome: "Manoela Almeida" },
-  ]);
-  const [correctors, setCorrectors] = useState<ICorrectorData[]>([
-    { nome: "João Bobão" },
-    { nome: "Camila Pereira " },
-    { nome: "Lucas Abreu" },
-    { nome: "Pedro Henrique " },
-    { nome: "Manoela Almeida" },
-  ]);
+  const [sellers, setSellers] = useState<ISellerData[]>([]);
+
+  const [correctors, setCorrectors] = useState<ICorrectorData[]>([]);
   const [categoria, setCategoria] = useState<ICategoryData[]>([
     { id: 1, descricao: "dahsouihfiuahf" },
     { id: 2, descricao: "dahsouihfiuahf" },
@@ -82,6 +70,31 @@ const TelaSelecionarCruds = () => {
       Alert.alert("Erro ao remover");
     }
   };
+
+  const onChangeVendedor = async () => {
+    const { data } = await api.get("/Vendedor");
+    setSellers(data);
+  };
+
+  const onChangeCorretor = async () => {
+    const { data } = await api.get("/Corretor");
+    setCorrectors(data);
+  };
+  const onChangeCategoria = async () => {
+    const { data } = await api.get("/Categoria");
+    setCategoria(data);
+  };
+  const onChangeImovel = async () => {
+    const { data } = await api.get("/Imovel");
+    setImovel(data);
+  };
+
+  useEffect(() => {
+    onChangeVendedor();
+    onChangeCorretor();
+    onChangeCategoria();
+    onChangeImovel();
+  }, []);
 
   return (
     <KeyboardAvoidingView
@@ -139,7 +152,12 @@ const TelaSelecionarCruds = () => {
               <ContainerFunctions>
                 <ContentAdd>
                   <ModalContent
-                    children={<TelaCrudEditarVendedor type="ADD" />}
+                    children={
+                      <TelaCrudEditarVendedor
+                        onChangeVendedor={onChangeVendedor}
+                        type="ADD"
+                      />
+                    }
                     title="Adicionar usuário"
                   />
 
@@ -153,6 +171,7 @@ const TelaSelecionarCruds = () => {
                               <ModalContent
                                 children={
                                   <TelaCrudEditarVendedor
+                                    onChangeVendedor={onChangeVendedor}
                                     seller={seller}
                                     type="EDIT"
                                   />
@@ -185,7 +204,12 @@ const TelaSelecionarCruds = () => {
               </ContentSubMenu>
               <ContentAdd>
                 <ModalContent
-                  children={<TelaCrudFormCorretor type="ADD" />}
+                  children={
+                    <TelaCrudFormCorretor
+                      onChangeCorretor={onChangeCorretor}
+                      type="ADD"
+                    />
+                  }
                   title="Adicionar corretor"
                 />
 
@@ -199,6 +223,7 @@ const TelaSelecionarCruds = () => {
                             <ModalContent
                               children={
                                 <TelaCrudFormCorretor
+                                  onChangeCorretor={onChangeCorretor}
                                   corrector={corrector}
                                   type="EDIT"
                                 />
@@ -231,7 +256,12 @@ const TelaSelecionarCruds = () => {
               <ContainerFunctions>
                 <ContentAdd>
                   <ModalContent
-                    children={<TelaCrudFormImovel type="ADD" />}
+                    children={
+                      <TelaCrudFormImovel
+                        onChangeImovel={onChangeImovel}
+                        type="ADD"
+                      />
+                    }
                     title="Adicionar imóvel"
                   />
 
@@ -245,7 +275,7 @@ const TelaSelecionarCruds = () => {
                               alignItems: "flex-end",
                               borderBottomWidth: 2,
                               borderBottomColor: "#cec6c6",
-                              paddingBottom: 30
+                              paddingBottom: 30,
                             }}
                           >
                             <ContentResponse>
@@ -261,6 +291,7 @@ const TelaSelecionarCruds = () => {
                               <ModalContent
                                 children={
                                   <TelaCrudFormImovel
+                                    onChangeImovel={onChangeImovel}
                                     imovel={imovel}
                                     type="EDIT"
                                   />
@@ -294,7 +325,12 @@ const TelaSelecionarCruds = () => {
               <ContainerFunctions>
                 <ContentAdd>
                   <ModalContent
-                    children={<TelaCrudFormCategoria type="ADD" />}
+                    children={
+                      <TelaCrudFormCategoria
+                        onChangeCategoria={onChangeCategoria}
+                        type="ADD"
+                      />
+                    }
                     title="Adicionar categoria"
                   />
 
@@ -309,6 +345,7 @@ const TelaSelecionarCruds = () => {
                               <ModalContent
                                 children={
                                   <TelaCrudEditarCategoria
+                                    onChangeCategoria={onChangeCategoria}
                                     categoria={categoria}
                                     type="EDIT"
                                   />

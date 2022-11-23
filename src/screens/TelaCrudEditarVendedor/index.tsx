@@ -24,11 +24,13 @@ import {
 interface ITelaCrudEditarVendedorProps {
   type: "ADD" | "EDIT";
   seller?: ISellerData;
+  onChangeVendedor: () => void;
 }
 
 const TelaCrudEditarVendedor = ({
   seller,
   type,
+  onChangeVendedor,
 }: ITelaCrudEditarVendedorProps) => {
   const [loading, setLoading] = useState(false);
 
@@ -38,6 +40,7 @@ const TelaCrudEditarVendedor = ({
     try {
       setLoading(true);
       const payload = {
+        id: form.id,
         documento: form.documento,
         nome: form.nome,
         imoveis: form.imoveis,
@@ -45,8 +48,8 @@ const TelaCrudEditarVendedor = ({
         telefone: form.telefone,
         nascimento: form.nascimento,
       };
-      await api.get("");
-      console.log(payload);
+      await api.post("/Vendedor", payload);
+      onChangeVendedor();
       Alert.alert("Vendedor adicionado com sucesso");
     } catch (err) {
       console.log(err);
@@ -67,7 +70,8 @@ const TelaCrudEditarVendedor = ({
         telefone: form.telefone ? form.telefone : seller?.telefone,
         nascimento: form.nascimento ? form.nascimento : seller?.nascimento,
       };
-      console.log(payload);
+      await api.put(`/Vendedor/${seller?.id}`, payload);
+      onChangeVendedor();
       Alert.alert("Vendedor editado com sucesso");
     } catch (err) {
       console.log(err);

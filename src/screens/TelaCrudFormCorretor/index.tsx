@@ -10,6 +10,7 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 import Button from "../../components/Button";
 import InputForm from "../../components/InputForm";
+import api from "../../services/api";
 import {
   Container,
   ContentButton,
@@ -22,11 +23,13 @@ import {
 interface ITelaCrudEditarVendedorProps {
   type: "ADD" | "EDIT";
   corrector?: ICorrectorData;
+  onChangeCorretor: () => void;
 }
 
 const TelaCrudEditarVendedor = ({
   corrector,
   type,
+  onChangeCorretor
 }: ITelaCrudEditarVendedorProps) => {
   const [loading, setLoading] = useState(false);
 
@@ -36,6 +39,7 @@ const TelaCrudEditarVendedor = ({
     try {
       setLoading(true);
       const payload = {
+        id: form.id,
         documento: form.documento,
         nome: form.nome,
         imoveis: form.creci,
@@ -43,7 +47,8 @@ const TelaCrudEditarVendedor = ({
         telefone: form.telefone,
         nascimento: form.data,
       };
-      console.log(payload);
+      await api.post("/Corretor", payload);
+      onChangeCorretor();
       Alert.alert("Adicionado com sucesso");
     } catch (err) {
       console.log(err);
@@ -57,6 +62,7 @@ const TelaCrudEditarVendedor = ({
     try {
       setLoading(true);
       const payload = {
+        id: form.id ? form.id : corrector?.id,
         documento: form.documento ? form.documento : corrector?.documento,
         nome: form.nome ? form.nome : corrector?.nome,
         imoveis: form.creci ? form.creci : corrector?.creci,
@@ -64,7 +70,8 @@ const TelaCrudEditarVendedor = ({
         telefone: form.telefone ? form.telefone : corrector?.telefone,
         nascimento: form.data ? form.data : corrector?.data,
       };
-      console.log(payload);
+      await api.put(`/Corretor/${corrector?.id}`, payload);
+      onChangeCorretor();
       Alert.alert("Editado com sucesso");
     } catch (err) {
       console.log(err);
