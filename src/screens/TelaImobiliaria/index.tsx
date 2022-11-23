@@ -32,7 +32,15 @@ import TelaFormImobiliaria from "../TelaFormImobiliaria";
 import axios from "axios";
 
 const TelaImobiliaria = () => {
-  const [imobiliaria, setImobiliaria] = useState<IImobiliariaData[]>([]);
+  const [imobiliaria, setImobiliaria] = useState<IImobiliariaData[]>([{
+    cnpj: "123456789",
+    cep: "86025520",
+    logradouro: "Rua mamore",
+    bairro: "Vila Mariana",
+    cidade: "Londrina",
+    uf: "PR",
+    creciVendedor: '123456789'
+  }]);
 
   const onDeleteImobiliaria = async (id: number) => {
     try {

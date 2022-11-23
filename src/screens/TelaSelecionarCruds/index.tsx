@@ -37,10 +37,56 @@ import {
 
 const TelaSelecionarCruds = () => {
   const [step, setStep] = useState(1);
-  const [sellers, setSellers] = useState<ISellerData[]>([]);
-  const [correctors, setCorrectors] = useState<ICorrectorData[]>([]);
-  const [categoria, setCategoria] = useState<ICategoryData[]>([]);
-  const [imovel, setImovel] = useState<IImovelData[]>([]);
+  const [sellers, setSellers] = useState<ISellerData[]>([
+    {
+      id: 1,
+      nome: "Luis Bob",
+    },
+    {
+      id: 2,
+      nome: "Marcelo Owada ",
+    },
+    {
+      id: 3,
+      nome: "Testee",
+    },
+  ]);
+  const [correctors, setCorrectors] = useState<ICorrectorData[]>([
+    {
+      id: 1,
+      nome: "Filipe Cupini",
+    },
+    {
+      id: 2,
+      nome: "Oliveira Vinicius",
+    },
+    {
+      id: 3,
+      nome: "Teste",
+    },
+  ]);
+  const [categoria, setCategoria] = useState<ICategoryData[]>([
+    {
+      descricao: "Lorem ipsum amet",
+    },
+  ]);
+  const [imovel, setImovel] = useState<IImovelData[]>([
+    {
+      idImovel: 1,
+      metrosQuadradosImovel: "120000",
+      metrosQuadradosTerreno: "15000",
+    },
+    {
+      idImovel: 2,
+      metrosQuadradosImovel: "85441",
+      metrosQuadradosTerreno: "15000",
+    },
+    {
+      idImovel: 3,
+      metrosQuadradosImovel: "55555",
+      metrosQuadradosTerreno: "15000",
+    },
+  ]);
 
   const onDelete = async (id: number) => {
     try {
