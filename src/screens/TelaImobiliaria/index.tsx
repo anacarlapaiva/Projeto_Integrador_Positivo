@@ -33,6 +33,7 @@ import {
 } from "../TelaSelecionarCruds/styles";
 import TelaFormImobiliaria from "../TelaFormImobiliaria";
 import api from "../../services/api";
+import axios from "axios";
 
 const TelaImobiliaria = () => {
   const [imobiliaria, setImobiliaria] = useState<IImobiliariaData[]>([]);
@@ -47,14 +48,13 @@ const TelaImobiliaria = () => {
   };
 
   const onChangeImobiliaria = async () => {
-    fetch("http://localhost:5000/Imobiliaria").then((response) => console.log(response));
-    const { data } = await api.get("/Imobiliaria");
+    const { data } = await axios.get("http://localhost:5000/Imobiliaria");
     console.log(data);
     setImobiliaria(data);
-  }
+  };
 
   useEffect(() => {
-    onChangeImobiliaria()
+    onChangeImobiliaria();
   }, []);
 
   return (
@@ -68,7 +68,12 @@ const TelaImobiliaria = () => {
           <ContentSubMenu>
             <TitlePage>Imobiliária</TitlePage>
             <ModalContent
-              children={<TelaFormImobiliaria onChangeImobiliaria={onChangeImobiliaria} type="ADD" />}
+              children={
+                <TelaFormImobiliaria
+                  onChangeImobiliaria={onChangeImobiliaria}
+                  type="ADD"
+                />
+              }
               title="cadastrar"
             />
           </ContentSubMenu>
@@ -95,10 +100,20 @@ const TelaImobiliaria = () => {
 
                           <ContentButton>
                             <ModalContent
-                              children={<TelaFormImobiliaria type="EDIT" onChangeImobiliaria={onChangeImobiliaria} />}
+                              children={
+                                <TelaFormImobiliaria
+                                  type="EDIT"
+                                  onChangeImobiliaria={onChangeImobiliaria}
+                                />
+                              }
                               title="Editar"
                             />
-                            <Right name="delete" size={24} color="red" onPress={onDeleteImobiliaria}/>
+                            <Right
+                              name="delete"
+                              size={24}
+                              color="red"
+                              onPress={onDeleteImobiliaria}
+                            />
                           </ContentButton>
                         </ContentTop>
                         <TextList>ID: {imob.id}, </TextList>
