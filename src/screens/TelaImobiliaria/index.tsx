@@ -35,7 +35,7 @@ const TelaImobiliaria = () => {
   const [imobiliaria, setImobiliaria] = useState<IImobiliariaData[]>([
     {
       id: 1,
-      cnpj: "123456789",
+      cnpj: "12345678912345",
       cep: "86025520",
       logradouro: "Rua mamore",
       bairro: "Vila Mariana",
@@ -45,7 +45,7 @@ const TelaImobiliaria = () => {
     },
     {
       id: 2,
-      cnpj: "5555555",
+      cnpj: "55555555555555",
       cep: "86025520",
       logradouro: "Rua mamore",
       bairro: "Vila Mariana",
