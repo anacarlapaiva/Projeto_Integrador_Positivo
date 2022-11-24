@@ -105,7 +105,6 @@ const TelaSelecionarCruds = () => {
       console.log(err);
     }
   };
-
   const onChangeCorretor = async () => {
     try {
       const { data } = await axios.get("http://localhosto:5000/Corretor");

@@ -22,6 +22,9 @@ import {
   Platform,
   TouchableWithoutFeedback,
 } from "react-native";
+import Button from "../../components/Button";
+import ModalContent from "../../components/Modal";
+import TelaCompras from "../TelaCompras";
 
 const Home: React.FC = () => {
   const [search, setSearch] = useState<string>("");
@@ -51,27 +54,52 @@ const Home: React.FC = () => {
             <ContentListImage>
               <ViewBox>
                 <Box source={FotoExemplo} />
-                <TextBottom>Apartamento</TextBottom>
+                <TextBottom>Apartamento cobertura</TextBottom>
+
+                <ModalContent
+                  children={<TelaCompras type="ADD" />}
+                  title="Adicionar imóvel"
+                />
+              </ViewBox>
+              <ViewBox>
+                <Box source={FotoExemplo} />
+                <TextBottom>Casa de praia</TextBottom>
+                <ModalContent
+                  children={<TelaCompras type="ADD" />}
+                  title="Adicionar imóvel"
+                />
+              </ViewBox>
+              <ViewBox>
+                <Box source={FotoExemplo} />
+                <TextBottom>Apartamento no centro</TextBottom>
+                <ModalContent
+                  children={<TelaCompras type="ADD" />}
+                  title="Adicionar imóvel"
+                />
+              </ViewBox>
+              <ViewBox>
+                <Box source={FotoExemplo} />
+                <TextBottom>Apartamento 2 quartos</TextBottom>
+                <ModalContent
+                  children={<TelaCompras type="ADD" />}
+                  title="Adicionar imóvel"
+                />
+              </ViewBox>
+              <ViewBox>
+                <Box source={FotoExemplo} />
+                <TextBottom>Casa com piscina</TextBottom>
+                <ModalContent
+                  children={<TelaCompras type="ADD" />}
+                  title="Adicionar imóvel"
+                />
               </ViewBox>
               <ViewBox>
                 <Box source={FotoExemplo} />
                 <TextBottom>Apartamento</TextBottom>
-              </ViewBox>
-              <ViewBox>
-                <Box source={FotoExemplo} />
-                <TextBottom>Apartamento</TextBottom>
-              </ViewBox>
-              <ViewBox>
-                <Box source={FotoExemplo} />
-                <TextBottom>Apartamento</TextBottom>
-              </ViewBox>
-              <ViewBox>
-                <Box source={FotoExemplo} />
-                <TextBottom>Apartamento</TextBottom>
-              </ViewBox>
-              <ViewBox>
-                <Box source={FotoExemplo} />
-                <TextBottom>Apartamento</TextBottom>
+                <ModalContent
+                  children={<TelaCompras type="ADD" />}
+                  title="Adicionar imóvel"
+                />
               </ViewBox>
             </ContentListImage>
           </ScrollView>
