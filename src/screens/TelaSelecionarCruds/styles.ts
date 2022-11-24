@@ -61,6 +61,7 @@ export const ContentAdd = styled.View`
 export const ContentList = styled.View`
   width: 100%;
   flex-direction: row;
+  margin-bottom: 10px;
 `;
 
 export const ContentOptions = styled.View`
