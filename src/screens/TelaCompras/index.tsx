@@ -41,7 +41,6 @@ const TelaCompras = ({ type }: ITelaComprasProps) => {
         imobiliaria: form.imobiliaria,
         corretor: form.corretor,
       };
-      console.log(payload);
       Alert.alert("Adicionado com sucesso");
     } catch (err) {
       console.log(err);

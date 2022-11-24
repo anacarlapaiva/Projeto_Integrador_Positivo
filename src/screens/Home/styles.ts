@@ -59,6 +59,8 @@ export const ContentListImage = styled.View`
 export const ViewBox = styled.View`
   flex-direction: column;
   flex-basis: 50%;
+  align-items: flex-start;
+  margin-bottom: 25px;
 `;
 
 export const Box = styled.Image`
