@@ -1,10 +1,10 @@
 interface ISellerData {
     id: number;
-    documento?: string;
-    nome: string;
+    documento?: any;
+    nome: any;
     imoveis?: any;
-    endereco?: string;
-    telefone?: string;
+    endereco?: any;
+    telefone?: any;
     nascimento?: any;
 }
 

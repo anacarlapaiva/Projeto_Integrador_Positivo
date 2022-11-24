@@ -21,7 +21,6 @@ import {
   Form,
   TitlePage,
 } from "./styles";
-import { Picker } from "@react-native-picker/picker";
 
 interface ITelaComprasProps {
   type: "ADD" | "EDIT";
