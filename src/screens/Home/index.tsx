@@ -15,6 +15,8 @@ import {
 } from "./styles";
 
 import FotoExemplo from "../../assets/example.png";
+import CasaPraia from "../../assets/praia.png";
+import Centro from "../../assets/praia.png";
 import { ScrollView } from "react-native-gesture-handler";
 import {
   Keyboard,
@@ -22,7 +24,6 @@ import {
   Platform,
   TouchableWithoutFeedback,
 } from "react-native";
-import Button from "../../components/Button";
 import ModalContent from "../../components/Modal";
 import TelaCompras from "../TelaCompras";
 
@@ -62,7 +63,7 @@ const Home: React.FC = () => {
                 />
               </ViewBox>
               <ViewBox>
-                <Box source={FotoExemplo} />
+                <Box source={CasaPraia} />
                 <TextBottom>Casa de praia</TextBottom>
                 <ModalContent
                   children={<TelaCompras type="ADD" />}
@@ -70,7 +71,7 @@ const Home: React.FC = () => {
                 />
               </ViewBox>
               <ViewBox>
-                <Box source={FotoExemplo} />
+                <Box source={Centro} />
                 <TextBottom>Apartamento no centro</TextBottom>
                 <ModalContent
                   children={<TelaCompras type="ADD" />}

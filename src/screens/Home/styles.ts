@@ -65,11 +65,12 @@ export const ViewBox = styled.View`
 
 export const Box = styled.Image`
 width: 95%;
+max-height: 50%;
+border-radius: 8px;
 `;
 
 export const TextBottom = styled.Text`
   color: #928f8f;
   font-size: ${RFValue(14)}px;
-  margin-top: ${RFValue(8)}px;
   margin-bottom: ${RFValue(16)}px;
 `;
