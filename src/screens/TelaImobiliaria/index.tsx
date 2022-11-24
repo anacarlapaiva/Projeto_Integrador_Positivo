@@ -30,34 +30,14 @@ import {
 } from "../TelaSelecionarCruds/styles";
 import TelaFormImobiliaria from "../TelaFormImobiliaria";
 import axios from "axios";
+import api from "../../services/api";
 
 const TelaImobiliaria = () => {
-  const [imobiliaria, setImobiliaria] = useState<IImobiliariaData[]>([
-    {
-      id: 1,
-      cnpj: "12345678912345",
-      cep: "86025520",
-      logradouro: "Rua mamore",
-      bairro: "Vila Mariana",
-      cidade: "Londrina",
-      uf: "PR",
-      creciVendedor: "123456789",
-    },
-    {
-      id: 2,
-      cnpj: "55555555555555",
-      cep: "86025520",
-      logradouro: "Rua mamore",
-      bairro: "Vila Mariana",
-      cidade: "Londrina",
-      uf: "PR",
-      creciVendedor: "123456789",
-    },
-  ]);
+  const [imobiliaria, setImobiliaria] = useState<IImobiliariaData[]>([]);
 
   const onDeleteImobiliaria = async (id: number) => {
     try {
-      await axios.delete(`http://localhost:5000/Imobiliaria/${id}`);
+      await api.delete(`/Imobiliaria/${id}`);
       Alert.alert("Imobiliaria removido com sucesso");
     } catch {
       Alert.alert("Erro ao remover imobiliaria");
@@ -66,7 +46,7 @@ const TelaImobiliaria = () => {
 
   const onChangeImobiliaria = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/Imobiliaria");
+      const { data } = await api.get("/Imobiliaria");
       if (data) {
         setImobiliaria(data);
       } else {

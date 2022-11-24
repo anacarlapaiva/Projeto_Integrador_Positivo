@@ -11,6 +11,7 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 import Button from "../../components/Button";
 import InputForm from "../../components/InputForm";
+import api from "../../services/api";
 import {
   Container,
   ContentButton,
@@ -42,7 +43,7 @@ const TelaCrudEditarCategoria = ({
         id: form.id,
         descricao: form.descricao,
       };
-      await axios.post("http://localhost:5000/Categoria", payload);
+      await api.post("/Categoria", payload);
       onChangeCategoria();
       Alert.alert("Adicionado com sucesso");
     } catch (err) {
@@ -61,8 +62,8 @@ const TelaCrudEditarCategoria = ({
         id: form.id ? form.id : categoria?.id,
         descricao: form.descricao ? form.descricao : categoria?.descricao,
       };
-      await axios.put(
-        `http://localhost:5000/Categoria/${categoria?.id}`,
+      await api.put(
+        `/Categoria/${categoria?.id}`,
         payload
       );
       onChangeCategoria();

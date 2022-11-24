@@ -49,7 +49,7 @@ const TelaFormImobiliaria = ({
         uf: form.uf,
         creciVendedor: form.creciVendedor,
       };
-      await axios.post("http://localhost:5000/Imobiliaria", payload);
+      await api.post("/Imobiliaria", payload);
       console.log(payload);
       onChangeImobiliaria();
       Alert.alert("Adicionado com sucesso");

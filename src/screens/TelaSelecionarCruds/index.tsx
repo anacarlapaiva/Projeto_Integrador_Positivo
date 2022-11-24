@@ -37,56 +37,10 @@ import {
 
 const TelaSelecionarCruds = () => {
   const [step, setStep] = useState(1);
-  const [sellers, setSellers] = useState<ISellerData[]>([
-    {
-      id: 1,
-      nome: "Luis Bob",
-    },
-    {
-      id: 2,
-      nome: "Marcelo Owada ",
-    },
-    {
-      id: 3,
-      nome: "Testee",
-    },
-  ]);
-  const [correctors, setCorrectors] = useState<ICorrectorData[]>([
-    {
-      id: 1,
-      nome: "Filipe Cupini",
-    },
-    {
-      id: 2,
-      nome: "Oliveira Vinicius",
-    },
-    {
-      id: 3,
-      nome: "Teste",
-    },
-  ]);
-  const [categoria, setCategoria] = useState<ICategoryData[]>([
-    {
-      descricao: "Lorem ipsum amet",
-    },
-  ]);
-  const [imovel, setImovel] = useState<IImovelData[]>([
-    {
-      idImovel: 1,
-      metrosQuadradosImovel: "120000",
-      metrosQuadradosTerreno: "15000",
-    },
-    {
-      idImovel: 2,
-      metrosQuadradosImovel: "85441",
-      metrosQuadradosTerreno: "15000",
-    },
-    {
-      idImovel: 3,
-      metrosQuadradosImovel: "55555",
-      metrosQuadradosTerreno: "15000",
-    },
-  ]);
+  const [sellers, setSellers] = useState<ISellerData[]>([]);
+  const [correctors, setCorrectors] = useState<ICorrectorData[]>([]);
+  const [categoria, setCategoria] = useState<ICategoryData[]>([]);
+  const [imovel, setImovel] = useState<IImovelData[]>([]);
 
   const onDelete = async (id: number) => {
     try {
@@ -99,7 +53,7 @@ const TelaSelecionarCruds = () => {
 
   const onChangeVendedor = async () => {
     try {
-      const { data } = await axios.get("http://localhosto:5000/Vendedor");
+      const { data } = await api.get("/Vendedor");
       setSellers(data);
     } catch (err) {
       console.log(err);
@@ -107,7 +61,7 @@ const TelaSelecionarCruds = () => {
   };
   const onChangeCorretor = async () => {
     try {
-      const { data } = await axios.get("http://localhosto:5000/Corretor");
+      const { data } = await api.get("/Corretor");
       setCorrectors(data);
     } catch (err) {
       console.log(err);
@@ -115,7 +69,7 @@ const TelaSelecionarCruds = () => {
   };
   const onChangeCategoria = async () => {
     try {
-      const { data } = await axios.get("http://localhosto:5000/Categoria");
+      const { data } = await api.get("/Categoria");
       setCategoria(data);
     } catch (err) {
       console.log(err);
@@ -123,7 +77,7 @@ const TelaSelecionarCruds = () => {
   };
   const onChangeImovel = async () => {
     try {
-      const { data } = await axios.get("http://localhosto:5000/Imovel");
+      const { data } = await api.get("/Imovel");
       setImovel(data);
     } catch (err) {
       console.log(err);
